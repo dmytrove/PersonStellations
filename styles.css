@@ -1,0 +1,62 @@
+body { 
+    margin: 0; 
+    touch-action: none; 
+    overflow: hidden;
+}
+
+canvas { 
+    display: block; 
+    touch-action: none;
+}
+
+.info {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-family: Arial, sans-serif;
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.timeline {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    background: rgba(0,0,0,0.5);
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.timeline input {
+    width: 100%;
+}
+
+.year-display {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.tooltip {
+    z-index: 1000;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 300px;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .info {
+        font-size: 12px;
+        top: 5px;
+        right: 5px;
+    }
+}

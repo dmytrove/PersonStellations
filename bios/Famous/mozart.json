@@ -1,0 +1,12 @@
+{
+    "name": "Wolfgang Amadeus Mozart",
+    "nickname": "Wolfgang",
+    "wiki": "https://en.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart",
+    "events": [
+        { "year": 1756, "lat": 47.8095, "lon": 13.0550, "info": "Born in Salzburg, Austria", "shortCode": "born" },
+        { "year": 1762, "lat": 48.2082, "lon": 16.3738, "info": "First performance for European royalty", "shortCode": "royal" },
+        { "year": 1782, "lat": 48.2082, "lon": 16.3738, "info": "Marriage to Constanze Weber", "shortCode": "marriage" },
+        { "year": 1787, "lat": 50.0755, "lon": 14.4378, "info": "Don Giovanni premieres in Prague", "shortCode": "dongiovanni" },
+        { "year": 1791, "lat": 48.2082, "lon": 16.3738, "info": "Died in Vienna", "shortCode": "died" }
+    ]
+}

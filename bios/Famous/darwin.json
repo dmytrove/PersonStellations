@@ -1,0 +1,12 @@
+{
+    "name": "Charles Darwin",
+    "nickname": "Charles",
+    "wiki": "https://en.wikipedia.org/wiki/Charles_Darwin",
+    "events": [
+        { "year": 1809, "lat": 52.7069, "lon": -2.7516, "info": "Born in Shrewsbury, England", "shortCode": "born" },
+        { "year": 1831, "lat": -33.8688, "lon": 151.2093, "info": "Began voyage on HMS Beagle", "shortCode": "beagle" },
+        { "year": 1835, "lat": -0.7393, "lon": -90.3518, "info": "Visited Galapagos Islands", "shortCode": "galapagos" },
+        { "year": 1859, "lat": 51.5074, "lon": -0.1278, "info": "Published On the Origin of Species", "shortCode": "origin" },
+        { "year": 1882, "lat": 51.3397, "lon": 0.0512, "info": "Died in Downe, Kent", "shortCode": "died" }
+    ]
+}

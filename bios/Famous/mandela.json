@@ -1,0 +1,13 @@
+{
+    "name": "Nelson Mandela",
+    "nickname": "Madiba",
+    "wiki": "https://en.wikipedia.org/wiki/Nelson_Mandela",
+    "events": [
+        { "year": 1918, "lat": -31.5868, "lon": 28.7829, "info": "Born in Mvezo, South Africa", "shortCode": "born" },
+        { "year": 1944, "lat": -26.2041, "lon": 28.0473, "info": "Joined African National Congress", "shortCode": "anc" },
+        { "year": 1964, "lat": -26.2041, "lon": 28.0473, "info": "Sentenced to life imprisonment", "shortCode": "prison" },
+        { "year": 1990, "lat": -33.9249, "lon": 18.4241, "info": "Released from prison", "shortCode": "release" },
+        { "year": 1994, "lat": -25.7461, "lon": 28.1881, "info": "Became President of South Africa", "shortCode": "president" },
+        { "year": 2013, "lat": -26.1052, "lon": 28.0568, "info": "Died in Johannesburg", "shortCode": "died" }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "name": "Nikola Tesla",
+    "nickname": "Tesla",
+    "wiki": "https://en.wikipedia.org/wiki/Nikola_Tesla",
+    "events": [
+        { "year": 1856, "lat": 44.5633, "lon": 15.3083, "info": "Born in Smiljan, Croatia", "shortCode": "born" },
+        { "year": 1884, "lat": 40.7128, "lon": -74.0060, "info": "Arrived in New York, worked for Edison", "shortCode": "nyc" },
+        { "year": 1888, "lat": 40.7128, "lon": -74.0060, "info": "Presented AC motor design", "shortCode": "acmotor" },
+        { "year": 1893, "lat": 41.8781, "lon": -87.6298, "info": "World's Fair demonstrations in Chicago", "shortCode": "fair" },
+        { "year": 1943, "lat": 40.7128, "lon": -74.0060, "info": "Died in New York City", "shortCode": "died" }
+    ]
+}

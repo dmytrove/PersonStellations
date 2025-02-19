@@ -1,0 +1,11 @@
+{
+    "name": "Ada Lovelace",
+    "nickname": "Ada",
+    "wiki": "https://en.wikipedia.org/wiki/Ada_Lovelace",
+    "events": [
+        { "year": 1815, "lat": 51.5074, "lon": -0.1278, "info": "Born in London, England", "shortCode": "born" },
+        { "year": 1833, "lat": 51.5074, "lon": -0.1278, "info": "Met Charles Babbage", "shortCode": "babbage" },
+        { "year": 1842, "lat": 51.5074, "lon": -0.1278, "info": "Published first computer algorithm", "shortCode": "algorithm" },
+        { "year": 1852, "lat": 51.5074, "lon": -0.1278, "info": "Died in London", "shortCode": "died" }
+    ]
+}

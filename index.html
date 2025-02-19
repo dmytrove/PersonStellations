@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Star Dome with Touch Support</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="info">Drag or swipe to pan</div>
+    <div class="timeline">
+        <input type="range" id="yearSlider" min="-400" max="2023" value="-400">
+        <div class="year-display" id="yearDisplay">-400</div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="importmap">
+    {
+        "imports": {
+            "lil-gui": "https://cdn.jsdelivr.net/npm/lil-gui@0.18/+esm"
+        }
+    }
+    </script>
+    <script type="module">
+        import { App } from './js/main.js';
+        new App();
+    </script>
+</body>
+</html>

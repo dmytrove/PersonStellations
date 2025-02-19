@@ -1,0 +1,12 @@
+{
+    "name": "Florence Nightingale",
+    "nickname": "Florence",
+    "wiki": "https://en.wikipedia.org/wiki/Florence_Nightingale",
+    "events": [
+        { "year": 1820, "lat": 43.7711, "lon": 11.2486, "info": "Born in Florence, Italy", "shortCode": "born" },
+        { "year": 1851, "lat": 51.5074, "lon": -0.1278, "info": "Completed nursing training in London", "shortCode": "training" },
+        { "year": 1854, "lat": 41.0082, "lon": 28.9784, "info": "Arrived in Istanbul during Crimean War", "shortCode": "crimea" },
+        { "year": 1860, "lat": 51.5074, "lon": -0.1278, "info": "Founded Nightingale School of Nursing", "shortCode": "school" },
+        { "year": 1910, "lat": 51.5074, "lon": -0.1278, "info": "Died in London", "shortCode": "died" }
+    ]
+}

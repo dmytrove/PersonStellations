@@ -1,0 +1,11 @@
+{
+    "name": "Marie Curie",
+    "nickname": "Marie",
+    "wiki": "https://en.wikipedia.org/wiki/Marie_Curie",
+    "events": [
+        { "year": 1867, "lat": 52.2297, "lon": 21.0122, "info": "Born in Warsaw, Poland", "shortCode": "born" },
+        { "year": 1903, "lat": 48.8566, "lon": 2.3522, "info": "Awarded Nobel Prize in Physics", "shortCode": "nobel1" },
+        { "year": 1911, "lat": 48.8566, "lon": 2.3522, "info": "Awarded Nobel Prize in Chemistry", "shortCode": "nobel2" },
+        { "year": 1934, "lat": 48.8566, "lon": 2.3522, "info": "Died in Paris, France", "shortCode": "died" }
+    ]
+}

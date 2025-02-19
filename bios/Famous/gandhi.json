@@ -1,0 +1,12 @@
+{
+    "name": "Mahatma Gandhi",
+    "nickname": "Gandhi",
+    "wiki": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
+    "events": [
+        { "year": 1869, "lat": 21.6417, "lon": 69.6319, "info": "Born in Porbandar, India", "shortCode": "born" },
+        { "year": 1893, "lat": -29.8587, "lon": 31.0218, "info": "Arrived in South Africa", "shortCode": "safrica" },
+        { "year": 1915, "lat": 19.0760, "lon": 72.8777, "info": "Returned to India", "shortCode": "india" },
+        { "year": 1930, "lat": 21.6417, "lon": 72.8777, "info": "Salt March", "shortCode": "salt" },
+        { "year": 1948, "lat": 28.6139, "lon": 77.2090, "info": "Died in Delhi, India", "shortCode": "died" }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "name": "Vincent van Gogh",
+    "nickname": "Vincent",
+    "wiki": "https://en.wikipedia.org/wiki/Vincent_van_Gogh",
+    "events": [
+        { "year": 1853, "lat": 51.4715, "lon": 5.4923, "info": "Born in Zundert, Netherlands", "shortCode": "born" },
+        { "year": 1886, "lat": 48.8566, "lon": 2.3522, "info": "Moved to Paris", "shortCode": "paris" },
+        { "year": 1888, "lat": 43.8504, "lon": 4.4121, "info": "Moved to Arles, painted Sunflowers", "shortCode": "arles" },
+        { "year": 1889, "lat": 43.9163, "lon": 4.8183, "info": "Painted Starry Night", "shortCode": "starry" },
+        { "year": 1890, "lat": 49.0833, "lon": 2.0333, "info": "Died in Auvers-sur-Oise", "shortCode": "died" }
+    ]
+}

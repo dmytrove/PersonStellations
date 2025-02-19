@@ -1,0 +1,56 @@
+{
+    "name": "Stanislaw Wierzba",
+    "nickname": "Stas",
+    "wiki": "https://www.centropa.org/en/biography/stanislaw-wierzba",
+    "events": [
+        {
+            "year": 1925,
+            "lat": 51.0674,
+            "lon": 19.4448,
+            "info": "Born on 1st October 1925 in Radomsko, Poland, to parents Abram Dawid and Fajgla Ajgenberg.",
+            "shortCode": "born"
+        },
+        {
+            "year": 1941,
+            "lat": 51.0674,
+            "lon": 19.4448,
+            "info": "Parents and siblings killed during the Holocaust.",
+            "shortCode": "family_tragedy"
+        },
+        {
+            "year": 1942,
+            "lat": 51.0674,
+            "lon": 19.4448,
+            "info": "Escaped from the Radomsko ghetto and assumed the identity of Stanislaw Wierzba to survive.",
+            "shortCode": "identity_change"
+        },
+        {
+            "year": 1945,
+            "lat": 52.2297,
+            "lon": 21.0122,
+            "info": "Returned to Warsaw after liberation and began working in a mechanical workshop.",
+            "shortCode": "post_war_return"
+        },
+        {
+            "year": 1955,
+            "lat": 52.2297,
+            "lon": 21.0122,
+            "info": "Legally changed his name from Israel Jozef Ajgenberg to Stanislaw Wierzba.",
+            "shortCode": "legal_name_change"
+        },
+        {
+            "year": 1990,
+            "lat": 52.2297,
+            "lon": 21.0122,
+            "info": "Became active in Jewish organizations, including the Association of Jewish War Veterans and Victims of Persecutions during World War Two.",
+            "shortCode": "community_involvement"
+        },
+        {
+            "year": 2005,
+            "lat": 52.2297,
+            "lon": 21.0122,
+            "info": "Interviewed by Centropa, sharing his life story and experiences.",
+            "shortCode": "centropa_interview"
+        }
+    ]
+}

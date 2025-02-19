@@ -1,0 +1,12 @@
+{
+    "name": "Pablo Picasso",
+    "nickname": "Pablo",
+    "wiki": "https://en.wikipedia.org/wiki/Pablo_Picasso",
+    "events": [
+        { "year": 1881, "lat": 36.7213, "lon": -4.4214, "info": "Born in Málaga, Spain", "shortCode": "born" },
+        { "year": 1901, "lat": 48.8566, "lon": 2.3522, "info": "Blue Period begins in Paris", "shortCode": "blue" },
+        { "year": 1907, "lat": 48.8566, "lon": 2.3522, "info": "Painted Les Demoiselles d'Avignon", "shortCode": "demoiselles" },
+        { "year": 1937, "lat": 48.8566, "lon": 2.3522, "info": "Painted Guernica", "shortCode": "guernica" },
+        { "year": 1973, "lat": 43.5928, "lon": 7.1047, "info": "Died in Mougins, France", "shortCode": "died" }
+    ]
+}

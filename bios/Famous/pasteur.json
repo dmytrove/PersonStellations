@@ -1,0 +1,12 @@
+{
+    "name": "Louis Pasteur",
+    "nickname": "Louis",
+    "wiki": "https://en.wikipedia.org/wiki/Louis_Pasteur",
+    "events": [
+        { "year": 1822, "lat": 46.6734, "lon": 5.5568, "info": "Born in Dole, France", "shortCode": "born" },
+        { "year": 1848, "lat": 48.8566, "lon": 2.3522, "info": "Discovered molecular asymmetry in Paris", "shortCode": "asymmetry" },
+        { "year": 1862, "lat": 48.8566, "lon": 2.3522, "info": "Developed pasteurization process", "shortCode": "pasteur" },
+        { "year": 1885, "lat": 48.8566, "lon": 2.3522, "info": "First successful rabies treatment", "shortCode": "rabies" },
+        { "year": 1895, "lat": 48.8449, "lon": 2.3769, "info": "Died in Marnes-la-Coquette", "shortCode": "died" }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "name": "Queen Victoria",
+    "nickname": "Victoria",
+    "wiki": "https://en.wikipedia.org/wiki/Queen_Victoria",
+    "events": [
+        { "year": 1819, "lat": 51.5002, "lon": -0.1410, "info": "Born in Kensington Palace, London", "shortCode": "born" },
+        { "year": 1837, "lat": 51.4995, "lon": -0.1248, "info": "Became Queen of the United Kingdom", "shortCode": "crown" },
+        { "year": 1840, "lat": 51.5014, "lon": -0.1419, "info": "Married Prince Albert", "shortCode": "marriage" },
+        { "year": 1876, "lat": 51.5014, "lon": -0.1419, "info": "Became Empress of India", "shortCode": "india" },
+        { "year": 1901, "lat": 50.8243, "lon": -0.5409, "info": "Died at Osborne House, Isle of Wight", "shortCode": "died" }
+    ]
+}

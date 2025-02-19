@@ -1,0 +1,12 @@
+{
+    "name": "Frida Kahlo",
+    "nickname": "Frida",
+    "wiki": "https://en.wikipedia.org/wiki/Frida_Kahlo",
+    "events": [
+        { "year": 1907, "lat": 19.3594, "lon": -99.2847, "info": "Born in Coyoacán, Mexico", "shortCode": "born" },
+        { "year": 1925, "lat": 19.4326, "lon": -99.1332, "info": "Suffered serious bus accident", "shortCode": "accident" },
+        { "year": 1929, "lat": 19.4326, "lon": -99.1332, "info": "Married Diego Rivera", "shortCode": "marriage" },
+        { "year": 1939, "lat": 48.8566, "lon": 2.3522, "info": "Exhibition in Paris", "shortCode": "paris" },
+        { "year": 1954, "lat": 19.3594, "lon": -99.2847, "info": "Died in Coyoacán, Mexico", "shortCode": "died" }
+    ]
+}

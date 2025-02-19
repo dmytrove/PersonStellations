@@ -1,0 +1,12 @@
+{
+    "name": "Helen Keller",
+    "nickname": "Helen",
+    "wiki": "https://en.wikipedia.org/wiki/Helen_Keller",
+    "events": [
+        { "year": 1880, "lat": 34.7445, "lon": -87.6675, "info": "Born in Tuscumbia, Alabama", "shortCode": "born" },
+        { "year": 1887, "lat": 34.7445, "lon": -87.6675, "info": "Met Anne Sullivan, began learning to communicate", "shortCode": "sullivan" },
+        { "year": 1904, "lat": 42.3736, "lon": -71.1097, "info": "Graduated from Radcliffe College", "shortCode": "graduate" },
+        { "year": 1920, "lat": 40.7128, "lon": -74.0060, "info": "Helped found American Civil Liberties Union", "shortCode": "aclu" },
+        { "year": 1968, "lat": 34.7445, "lon": -87.6675, "info": "Died in Tuscumbia, Alabama", "shortCode": "died" }
+    ]
+}

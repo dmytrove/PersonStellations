@@ -1,0 +1,63 @@
+{
+    "name": "Edith Umova",
+    "nickname": "Edith",
+    "wiki": "https://www.centropa.org/en/biography/edith-umova",
+    "events": [
+        {
+            "year": 1932,
+            "lat": 59.437,
+            "lon": 24.7535,
+            "info": "Born in Tallinn, Estonia, to parents Hilel and Hasse Umov.",
+            "shortCode": "born"
+        },
+        {
+            "year": 1941,
+            "lat": 40.7821,
+            "lon": 72.3442,
+            "info": "Evacuated to Andijon, Uzbekistan, with her mother and grandmother during World War II.",
+            "shortCode": "evacuation"
+        },
+        {
+            "year": 1945,
+            "lat": 59.437,
+            "lon": 24.7535,
+            "info": "Returned to Tallinn after the war; attended a Russian school and became friends with Tsylia Perelman and Pesse Speranskaya.",
+            "shortCode": "return_education"
+        },
+        {
+            "year": 1953,
+            "lat": 59.437,
+            "lon": 24.7535,
+            "info": "Experienced profound grief upon hearing of Stalin's death during her 8th-grade year.",
+            "shortCode": "stalin_death"
+        },
+        {
+            "year": 1956,
+            "lat": 59.437,
+            "lon": 24.7535,
+            "info": "Maternal grandmother Ella Marjenburger passed away; buried in the Jewish cemetery in Tallinn.",
+            "shortCode": "grandmother_death"
+        },
+        {
+            "year": 1963,
+            "lat": 59.437,
+            "lon": 24.7535,
+            "info": "Married Yevgeniy Kuznetsov, a musician; the couple had no children.",
+            "shortCode": "marriage"
+        },
+        {
+            "year": 1985,
+            "lat": 59.437,
+            "lon": 24.7535,
+            "info": "Witnessed the establishment of the Jewish community in Estonia, the first officially registered Jewish cultural organization in the USSR.",
+            "shortCode": "community_establishment"
+        },
+        {
+            "year": 2005,
+            "lat": 59.437,
+            "lon": 24.7535,
+            "info": "Interviewed by Centropa, sharing her life experiences and reflections.",
+            "shortCode": "centropa_interview"
+        }
+    ]
+}

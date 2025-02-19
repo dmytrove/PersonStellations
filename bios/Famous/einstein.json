@@ -1,0 +1,11 @@
+{
+    "name": "Albert Einstein",
+    "nickname": "Albert",
+    "wiki": "https://en.wikipedia.org/wiki/Albert_Einstein",
+    "events": [
+        { "year": 1879, "lat": 48.4, "lon": 10.0, "info": "Born in Ulm, Germany", "shortCode": "born" },
+        { "year": 1905, "lat": 46.947, "lon": 7.4474, "info": "Annus Mirabilis – published groundbreaking papers", "shortCode": "papers" },
+        { "year": 1921, "lat": 48.1351, "lon": 11.582, "info": "Awarded Nobel Prize in Physics", "shortCode": "nobel" },
+        { "year": 1955, "lat": 40.3493, "lon": -74.6594, "info": "Died in Princeton, USA", "shortCode": "died" }
+    ]
+}
