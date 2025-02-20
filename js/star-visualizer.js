@@ -26,23 +26,29 @@ export class StarVisualizer {
         return tooltip;
     }
 
-    createTextSprite(text) {
+    createTextSprite(text, config) {
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
-        canvas.width = 2048; // Doubled for even better resolution
+        canvas.width = 2048;
         canvas.height = 1024;
 
-        // Even larger text with better contrast
-        context.font = 'Bold 96px Arial'; // Doubled font size
-        context.strokeStyle = 'black';
-        context.lineWidth = 12; // Doubled outline thickness
+        const theme = config.isDarkTheme ? config.darkTheme : config.lightTheme;
+        
+        // Set up text style
+        context.font = 'Bold 96px Arial';
         context.textAlign = 'center';
+        
+        // Draw outline in opposite color with 60% opacity
+        context.strokeStyle = config.isDarkTheme ? 'rgba(0, 0, 0, 0.6)' : 'rgba(255, 255, 255, 0.6)';
+        context.lineWidth = 12;
         context.strokeText(text, 1024, 512);
-        context.fillStyle = 'white';
+        
+        // Draw main text
+        context.fillStyle = theme.textColor;
         context.fillText(text, 1024, 512);
 
         const texture = new THREE.CanvasTexture(canvas);
-        texture.minFilter = THREE.LinearFilter; // Prevent blurry text
+        texture.minFilter = THREE.LinearFilter;
         texture.magFilter = THREE.LinearFilter;
         
         const spriteMaterial = new THREE.SpriteMaterial({ 
@@ -51,8 +57,23 @@ export class StarVisualizer {
             depthTest: false
         });
         const sprite = new THREE.Sprite(spriteMaterial);
-        sprite.scale.set(24, 12, 1); // Doubled scale
+        sprite.scale.set(24, 12, 1);
         return sprite;
+    }
+
+    updateTextColors(config) {
+        this.textSprites.forEach(sprite => {
+            const labelText = sprite.userData.text;
+            const newSprite = this.createTextSprite(labelText, config);
+            newSprite.position.copy(sprite.position);
+            newSprite.userData = {...sprite.userData};
+            this.group.remove(sprite);
+            this.group.add(newSprite);
+            const index = this.textSprites.indexOf(sprite);
+            if (index !== -1) {
+                this.textSprites[index] = newSprite;
+            }
+        });
     }
 
     createSphereGeometry() {
@@ -263,9 +284,12 @@ export class StarVisualizer {
 
                 // Rest of the existing star creation code...
                 const labelText = `${person.nickname} | ${event.shortCode} | ${event.year}`;
-                const textSprite = this.createTextSprite(labelText);
+                const textSprite = this.createTextSprite(labelText, config);
                 textSprite.position.set(pos.x * 1.3, pos.y * 1.3, pos.z * 1.3);
-                textSprite.userData = { associatedStar: starMesh };
+                textSprite.userData = { 
+                    associatedStar: starMesh,
+                    text: labelText
+                };
                 
                 this.group.add(starMesh);
                 this.group.add(textSprite);

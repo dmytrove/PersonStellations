@@ -18,7 +18,18 @@ export const config = {
     domeOpacity: 0.03, // Made even more subtle
     geodesicLines: true,
     geodesicColor: '#222222', // Slightly brighter lines
-    geodesicCount: 24 // More lines for better visualization
+    geodesicCount: 24, // More lines for better visualization
+    isDarkTheme: true,
+    darkTheme: {
+        backgroundColor: '#000000',
+        textColor: '#ffffff',
+        guiTheme: 'dark'
+    },
+    lightTheme: {
+        backgroundColor: '#ffffff',
+        textColor: '#000000',
+        guiTheme: 'light'
+    }
 };
 
 export function latLongToCartesian(lat, lon, radius) {
@@ -43,38 +54,33 @@ async function getCentropaBioIds() {
 }
 
 async function getBioFolders() {
-    const response = await fetch('bios_structure.json');
-    if (!response.ok) {
-        throw new Error('Failed to load bios_structure.json');
-    }
-    const structure = await response.json();
-    return structure.folders;
+    return ['Famous', 'centropa'];
 }
 
 async function getBiosFromFolder(folder) {
     try {
         if (folder === 'Famous') {
-            const response = await fetch('persons.json');
-            if (!response.ok) throw new Error('Failed to load persons.json');
-            const personsList = await response.json();
-            if (!personsList.persons || !Array.isArray(personsList.persons)) {
-                throw new Error('Invalid persons data');
-            }
+            const famousBioIds = [
+                'aristotle', 'austen', 'cleopatra', 'curie', 'darwin',
+                'davinci', 'einstein', 'gandhi', 'kahlo', 'keller',
+                'lovelace', 'mandela', 'mozart', 'nightingale', 'pasteur',
+                'picasso', 'shakespeare', 'tesla', 'vangogh', 'victoria'
+            ];
             
             return await Promise.all(
-                personsList.persons.map(async (personRef) => {
-                    const bioResponse = await fetch(`bios/Famous/${personRef.id}.json`);
+                famousBioIds.map(async (id) => {
+                    const bioResponse = await fetch(`bios/Famous/${id}.json`);
                     if (!bioResponse.ok) {
-                        console.error(`Failed to load bio for ${personRef.id}`);
+                        console.error(`Failed to load bio for ${id}`);
                         return null;
                     }
                     const bio = await bioResponse.json();
-                    bio.category = 'Famous'; // Add category information
+                    bio.category = 'Famous';
                     return bio;
                 })
             );
         } else {
-            // Handle other folders (e.g., centropa)
+            // Handle centropa folder
             const bioIds = folder === 'centropa' ? 
                 ['edith-umova', 'michal-warzager', 'stanislaw-wierzba'] : [];
             
@@ -86,7 +92,7 @@ async function getBiosFromFolder(folder) {
                         return null;
                     }
                     const bio = await bioResponse.json();
-                    bio.category = folder; // Add category information
+                    bio.category = folder;
                     return bio;
                 })
             );

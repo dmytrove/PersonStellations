@@ -1,7 +1,22 @@
+:root {
+    --text-color: #ffffff;
+    --background-color: #000000;
+    --info-background: rgba(0, 0, 0, 0.7);
+}
+
+/* Light theme variables */
+.theme-light {
+    --text-color: #000000;
+    --background-color: #ffffff;
+    --info-background: rgba(255, 255, 255, 0.7);
+}
+
 body { 
     margin: 0; 
-    touch-action: none; 
     overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 canvas { 
@@ -10,37 +25,15 @@ canvas {
 }
 
 .info {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: white;
-    font-family: Arial, sans-serif;
-    background: rgba(0,0,0,0.5);
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.timeline {
-    position: absolute;
-    bottom: 20px;
+    position: fixed;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
-    background: rgba(0,0,0,0.5);
-    padding: 15px;
+    padding: 10px 20px;
+    background: var(--info-background);
     border-radius: 5px;
-    color: white;
-    font-family: Arial, sans-serif;
-}
-
-.timeline input {
-    width: 100%;
-}
-
-.year-display {
-    text-align: center;
-    margin-top: 5px;
+    z-index: 100;
+    pointer-events: none;
 }
 
 .tooltip {

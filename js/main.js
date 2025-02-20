@@ -11,8 +11,10 @@ export class App {
         this.inputManager = new InputManager();
         this.starVisualizer = new StarVisualizer();
         this.persons = [];
+        this.gui = null; // Add GUI instance property
         this.peopleFolder = null; // Initialize peopleFolder reference
         
+        this.applyTheme(config.isDarkTheme);
         this.init();
     }
 
@@ -34,33 +36,26 @@ export class App {
     }
 
     setupGUI() {
-        const gui = new GUI();
+        this.gui = new GUI(); // Store GUI instance
+        this.gui.domElement.classList.add(config.isDarkTheme ? 'theme-dark' : 'theme-light');
+        
         if (window.innerWidth <= 768) {
-            gui.close();
+            this.gui.close();
         }
 
-        // Create Time Range folder
-        const timeFolder = gui.addFolder('Time Range');
-        timeFolder.open(false);
-        
-        // Add time range controls
-        timeFolder.add(config, 'startYear', config.minYear, config.maxYear, 1)
-            .name('Start Year')
-            .onChange(() => {
-                if (config.startYear > config.endYear) {
-                    config.endYear = config.startYear;
-                }
-                this.updateStarVisibility();
+        const appearanceFolder = this.gui.addFolder('Appearance');
+        appearanceFolder.open(false);
+        appearanceFolder.add(config, 'isDarkTheme')
+            .name('Dark Theme')
+            .onChange((value) => {
+                this.applyTheme(value);
+                this.gui.domElement.classList.toggle('theme-dark', value);
+                this.gui.domElement.classList.toggle('theme-light', !value);
             });
-            
-        timeFolder.add(config, 'endYear', config.minYear, config.maxYear, 1)
-            .name('End Year')
-            .onChange(() => {
-                if (config.endYear < config.startYear) {
-                    config.startYear = config.endYear;
-                }
-                this.updateStarVisibility();
-            });
+
+        // Create a parent Persons folder
+        const personsFolder = this.gui.addFolder('Persons');
+        personsFolder.open(false);
 
         // Create folders for each category
         const categoryFolders = {};
@@ -75,9 +70,9 @@ export class App {
             personsByCategory[category].push(person);
         });
 
-        // Create folders and controls for each category
+        // Create folders and controls for each category under the Persons folder
         Object.entries(personsByCategory).forEach(([category, persons]) => {
-            const categoryFolder = gui.addFolder(category);
+            const categoryFolder = personsFolder.addFolder(category);
             categoryFolders[category] = categoryFolder;
             categoryFolder.open(false);
 
@@ -109,23 +104,41 @@ export class App {
         // Store category folders for potential future use
         this.categoryFolders = categoryFolders;
 
-        const controlFolder = gui.addFolder('Controls');
+        const controlFolder = this.gui.addFolder('Controls');
         controlFolder.open(false);
         controlFolder.add(config, 'panSpeed', 0.1, 3, 0.1);
         controlFolder.add(config, 'autoRotate');
         controlFolder.add(config, 'reset').onChange(() => this.resetView());
 
-        const cameraFolder = gui.addFolder('Camera');
+        const cameraFolder = this.gui.addFolder('Camera');
         cameraFolder.open(false);
         cameraFolder.add(config, 'cameraDistance', 0, 50).onChange((value) => {
             this.camera.position.z = value;
         });
 
-        const sceneFolder = gui.addFolder('Scene');
+        const sceneFolder = this.gui.addFolder('Scene');
         sceneFolder.open(false);
         sceneFolder.addColor(config, 'backgroundColor').onChange((value) => {
             this.scene.background = new THREE.Color(value);
         });
+    }
+
+    applyTheme(isDark) {
+        const theme = isDark ? config.darkTheme : config.lightTheme;
+        document.body.classList.toggle('theme-dark', isDark);
+        document.body.classList.toggle('theme-light', !isDark);
+        this.scene.background = new THREE.Color(theme.backgroundColor);
+        
+        // Update text colors for star labels
+        if (this.starVisualizer) {
+            this.starVisualizer.updateTextColors(config);
+        }
+        
+        // Update GUI controllers if they exist
+        if (this.gui) {
+            this.gui.domElement.classList.toggle('theme-dark', isDark);
+            this.gui.domElement.classList.toggle('theme-light', !isDark);
+        }
     }
 
     setupEventListeners() {
