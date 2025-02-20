@@ -27,6 +27,11 @@ export class App {
         
         this.applyTheme(config.isDarkTheme);
         this.init();
+
+        this.isRunning = true;
+        this.lastRenderTime = 0;
+        this.frameId = null;
+        this.FRAME_BUDGET = 1000 / 60; // Target 60 FPS
     }
 
     async init() {
@@ -89,17 +94,46 @@ export class App {
         }
     }
 
-    animate() {
-        requestAnimationFrame(() => this.animate());
+    animate(timestamp) {
+        if (!this.isRunning) return;
+        
+        const deltaTime = timestamp - this.lastRenderTime;
+        if (deltaTime < this.FRAME_BUDGET) {
+            this.frameId = requestAnimationFrame((t) => this.animate(t));
+            return;
+        }
+
+        this.lastRenderTime = timestamp;
         
         const time = performance.now() * 0.001;
         this.visualizationManager.updateAnimation(time);
         this.inputManager.update(this.sceneManager.group, config);
         this.sceneManager.render();
+        
+        this.frameId = requestAnimationFrame((t) => this.animate(t));
     }
 
     startAnimation() {
-        this.animate();
+        this.isRunning = true;
+        this.lastRenderTime = performance.now();
+        this.animate(this.lastRenderTime);
+    }
+
+    stopAnimation() {
+        this.isRunning = false;
+        if (this.frameId !== null) {
+            cancelAnimationFrame(this.frameId);
+            this.frameId = null;
+        }
+    }
+
+    dispose() {
+        this.stopAnimation();
+        this.sceneManager.dispose();
+        this.visualizationManager.dispose();
+        if (this.guiManager) {
+            this.guiManager.destroy();
+        }
     }
 
     setupGUI() {
