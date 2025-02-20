@@ -3,9 +3,53 @@
     "nickname": "Ada",
     "wiki": "https://en.wikipedia.org/wiki/Ada_Lovelace",
     "events": [
-        { "year": 1815, "lat": 51.5074, "lon": -0.1278, "info": "Born in London, England", "shortCode": "born" },
-        { "year": 1833, "lat": 51.5074, "lon": -0.1278, "info": "Met Charles Babbage", "shortCode": "babbage" },
-        { "year": 1842, "lat": 51.5074, "lon": -0.1278, "info": "Published first computer algorithm", "shortCode": "algorithm" },
-        { "year": 1852, "lat": 51.5074, "lon": -0.1278, "info": "Died in London", "shortCode": "died" }
+        {
+            "year": 1815,
+            "lat": 51.5074,
+            "lon": -0.1278,
+            "info": "Born in London, England",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 62.24120058502513,
+                "y": 78.26885508072846,
+                "z": 0.13883114418182735
+            }
+        },
+        {
+            "year": 1833,
+            "lat": 51.5074,
+            "lon": -0.1278,
+            "info": "Met Charles Babbage",
+            "shortCode": "babbage",
+            "cartesian": {
+                "x": 62.24120058502513,
+                "y": 78.26885508072846,
+                "z": 0.13883114418182735
+            }
+        },
+        {
+            "year": 1842,
+            "lat": 51.5074,
+            "lon": -0.1278,
+            "info": "Published first computer algorithm",
+            "shortCode": "algorithm",
+            "cartesian": {
+                "x": 62.24120058502513,
+                "y": 78.26885508072846,
+                "z": 0.13883114418182735
+            }
+        },
+        {
+            "year": 1852,
+            "lat": 51.5074,
+            "lon": -0.1278,
+            "info": "Died in London",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 62.24120058502513,
+                "y": 78.26885508072846,
+                "z": 0.13883114418182735
+            }
+        }
     ]
 }

@@ -3,10 +3,65 @@
     "nickname": "Vincent",
     "wiki": "https://en.wikipedia.org/wiki/Vincent_van_Gogh",
     "events": [
-        { "year": 1853, "lat": 51.4715, "lon": 5.4923, "info": "Born in Zundert, Netherlands", "shortCode": "born" },
-        { "year": 1886, "lat": 48.8566, "lon": 2.3522, "info": "Moved to Paris", "shortCode": "paris" },
-        { "year": 1888, "lat": 43.8504, "lon": 4.4121, "info": "Moved to Arles, painted Sunflowers", "shortCode": "arles" },
-        { "year": 1889, "lat": 43.9163, "lon": 4.8183, "info": "Painted Starry Night", "shortCode": "starry" },
-        { "year": 1890, "lat": 49.0833, "lon": 2.0333, "info": "Died in Auvers-sur-Oise", "shortCode": "died" }
+        {
+            "year": 1853,
+            "lat": 51.4715,
+            "lon": 5.4923,
+            "info": "Born in Zundert, Netherlands",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 62.004413578120484,
+                "y": 78.22984095401195,
+                "z": -5.9619360230870715
+            }
+        },
+        {
+            "year": 1886,
+            "lat": 48.8566,
+            "lon": 2.3522,
+            "info": "Moved to Paris",
+            "shortCode": "paris",
+            "cartesian": {
+                "x": 65.73914875834973,
+                "y": 75.30652322342716,
+                "z": -2.700348223283554
+            }
+        },
+        {
+            "year": 1888,
+            "lat": 43.8504,
+            "lon": 4.4121,
+            "info": "Moved to Arles, painted Sunflowers",
+            "shortCode": "arles",
+            "cartesian": {
+                "x": 71.90139969553539,
+                "y": 69.27777994627866,
+                "z": -5.54778582299779
+            }
+        },
+        {
+            "year": 1889,
+            "lat": 43.9163,
+            "lon": 4.8183,
+            "info": "Painted Starry Night",
+            "shortCode": "starry",
+            "cartesian": {
+                "x": 71.7808146323431,
+                "y": 69.36067888392668,
+                "z": -6.05069214867256
+            }
+        },
+        {
+            "year": 1890,
+            "lat": 49.0833,
+            "lon": 2.0333,
+            "info": "Died in Auvers-sur-Oise",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 65.45487145108527,
+                "y": 75.56625997684624,
+                "z": -2.3238236666300023
+            }
+        }
     ]
 }

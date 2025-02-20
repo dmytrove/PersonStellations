@@ -3,10 +3,65 @@
     "nickname": "Louis",
     "wiki": "https://en.wikipedia.org/wiki/Louis_Pasteur",
     "events": [
-        { "year": 1822, "lat": 46.6734, "lon": 5.5568, "info": "Born in Dole, France", "shortCode": "born" },
-        { "year": 1848, "lat": 48.8566, "lon": 2.3522, "info": "Discovered molecular asymmetry in Paris", "shortCode": "asymmetry" },
-        { "year": 1862, "lat": 48.8566, "lon": 2.3522, "info": "Developed pasteurization process", "shortCode": "pasteur" },
-        { "year": 1885, "lat": 48.8566, "lon": 2.3522, "info": "First successful rabies treatment", "shortCode": "rabies" },
-        { "year": 1895, "lat": 48.8449, "lon": 2.3769, "info": "Died in Marnes-la-Coquette", "shortCode": "died" }
+        {
+            "year": 1822,
+            "lat": 46.6734,
+            "lon": 5.5568,
+            "info": "Born in Dole, France",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 68.29316945171406,
+                "y": 72.74542828688055,
+                "z": -6.644220766785784
+            }
+        },
+        {
+            "year": 1848,
+            "lat": 48.8566,
+            "lon": 2.3522,
+            "info": "Discovered molecular asymmetry in Paris",
+            "shortCode": "asymmetry",
+            "cartesian": {
+                "x": 65.73914875834973,
+                "y": 75.30652322342716,
+                "z": -2.700348223283554
+            }
+        },
+        {
+            "year": 1862,
+            "lat": 48.8566,
+            "lon": 2.3522,
+            "info": "Developed pasteurization process",
+            "shortCode": "pasteur",
+            "cartesian": {
+                "x": 65.73914875834973,
+                "y": 75.30652322342716,
+                "z": -2.700348223283554
+            }
+        },
+        {
+            "year": 1885,
+            "lat": 48.8566,
+            "lon": 2.3522,
+            "info": "First successful rabies treatment",
+            "shortCode": "rabies",
+            "cartesian": {
+                "x": 65.73914875834973,
+                "y": 75.30652322342716,
+                "z": -2.700348223283554
+            }
+        },
+        {
+            "year": 1895,
+            "lat": 48.8449,
+            "lon": 2.3769,
+            "info": "Died in Marnes-la-Coquette",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 65.7533417955531,
+                "y": 75.29308616717239,
+                "z": -2.729325583348886
+            }
+        }
     ]
 }

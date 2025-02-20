@@ -3,10 +3,65 @@
     "nickname": "Frida",
     "wiki": "https://en.wikipedia.org/wiki/Frida_Kahlo",
     "events": [
-        { "year": 1907, "lat": 19.3594, "lon": -99.2847, "info": "Born in Coyoacán, Mexico", "shortCode": "born" },
-        { "year": 1925, "lat": 19.4326, "lon": -99.1332, "info": "Suffered serious bus accident", "shortCode": "accident" },
-        { "year": 1929, "lat": 19.4326, "lon": -99.1332, "info": "Married Diego Rivera", "shortCode": "marriage" },
-        { "year": 1939, "lat": 48.8566, "lon": 2.3522, "info": "Exhibition in Paris", "shortCode": "paris" },
-        { "year": 1954, "lat": 19.3594, "lon": -99.2847, "info": "Died in Coyoacán, Mexico", "shortCode": "died" }
+        {
+            "year": 1907,
+            "lat": 19.3594,
+            "lon": -99.2847,
+            "info": "Born in Coyoacán, Mexico",
+            "shortCode": "born",
+            "cartesian": {
+                "x": -15.221775367940207,
+                "y": 33.14926775044042,
+                "z": 93.10973956712358
+            }
+        },
+        {
+            "year": 1925,
+            "lat": 19.4326,
+            "lon": -99.1332,
+            "info": "Suffered serious bus accident",
+            "shortCode": "accident",
+            "cartesian": {
+                "x": -14.968789524176776,
+                "y": 33.2697750403937,
+                "z": 93.10777308550824
+            }
+        },
+        {
+            "year": 1929,
+            "lat": 19.4326,
+            "lon": -99.1332,
+            "info": "Married Diego Rivera",
+            "shortCode": "marriage",
+            "cartesian": {
+                "x": -14.968789524176776,
+                "y": 33.2697750403937,
+                "z": 93.10777308550824
+            }
+        },
+        {
+            "year": 1939,
+            "lat": 48.8566,
+            "lon": 2.3522,
+            "info": "Exhibition in Paris",
+            "shortCode": "paris",
+            "cartesian": {
+                "x": 65.73914875834973,
+                "y": 75.30652322342716,
+                "z": -2.700348223283554
+            }
+        },
+        {
+            "year": 1954,
+            "lat": 19.3594,
+            "lon": -99.2847,
+            "info": "Died in Coyoacán, Mexico",
+            "shortCode": "died",
+            "cartesian": {
+                "x": -15.221775367940207,
+                "y": 33.14926775044042,
+                "z": 93.10973956712358
+            }
+        }
     ]
 }

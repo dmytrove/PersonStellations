@@ -3,10 +3,65 @@
     "nickname": "Gandhi",
     "wiki": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
     "events": [
-        { "year": 1869, "lat": 21.6417, "lon": 69.6319, "info": "Born in Porbandar, India", "shortCode": "born" },
-        { "year": 1893, "lat": -29.8587, "lon": 31.0218, "info": "Arrived in South Africa", "shortCode": "safrica" },
-        { "year": 1915, "lat": 19.0760, "lon": 72.8777, "info": "Returned to India", "shortCode": "india" },
-        { "year": 1930, "lat": 21.6417, "lon": 72.8777, "info": "Salt March", "shortCode": "salt" },
-        { "year": 1948, "lat": 28.6139, "lon": 77.2090, "info": "Died in Delhi, India", "shortCode": "died" }
+        {
+            "year": 1869,
+            "lat": 21.6417,
+            "lon": 69.6319,
+            "info": "Born in Porbandar, India",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 32.351551144523754,
+                "y": 36.8801148590988,
+                "z": -87.13916608806251
+            }
+        },
+        {
+            "year": 1893,
+            "lat": -29.8587,
+            "lon": 31.0218,
+            "info": "Arrived in South Africa",
+            "shortCode": "safrica",
+            "cartesian": {
+                "x": 74.32133474010143,
+                "y": -49.786273294004175,
+                "z": -44.695259188693804
+            }
+        },
+        {
+            "year": 1915,
+            "lat": 19.076,
+            "lon": 72.8777,
+            "info": "Returned to India",
+            "shortCode": "india",
+            "cartesian": {
+                "x": 27.824491707426713,
+                "y": 32.68220510091861,
+                "z": -90.31982689844368
+            }
+        },
+        {
+            "year": 1930,
+            "lat": 21.6417,
+            "lon": 72.8777,
+            "info": "Salt March",
+            "shortCode": "salt",
+            "cartesian": {
+                "x": 27.365868694906403,
+                "y": 36.8801148590988,
+                "z": -88.831111433736
+            }
+        },
+        {
+            "year": 1948,
+            "lat": 28.6139,
+            "lon": 77.209,
+            "info": "Died in Delhi, India",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 19.435560415000303,
+                "y": 47.89048431941791,
+                "z": -85.60818011736063
+            }
+        }
     ]
 }

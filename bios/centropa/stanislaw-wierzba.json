@@ -8,49 +8,84 @@
             "lat": 51.0674,
             "lon": 19.4448,
             "info": "Born on 1st October 1925 in Radomsko, Poland, to parents Abram Dawid and Fajgla Ajgenberg.",
-            "shortCode": "born"
+            "shortCode": "born",
+            "cartesian": {
+                "x": 59.25631597170341,
+                "y": 77.78857258252064,
+                "z": -20.91953615727574
+            }
         },
         {
             "year": 1941,
             "lat": 51.0674,
             "lon": 19.4448,
             "info": "Parents and siblings killed during the Holocaust.",
-            "shortCode": "family_tragedy"
+            "shortCode": "family_tragedy",
+            "cartesian": {
+                "x": 59.25631597170341,
+                "y": 77.78857258252064,
+                "z": -20.91953615727574
+            }
         },
         {
             "year": 1942,
             "lat": 51.0674,
             "lon": 19.4448,
             "info": "Escaped from the Radomsko ghetto and assumed the identity of Stanislaw Wierzba to survive.",
-            "shortCode": "identity_change"
+            "shortCode": "identity_change",
+            "cartesian": {
+                "x": 59.25631597170341,
+                "y": 77.78857258252064,
+                "z": -20.91953615727574
+            }
         },
         {
             "year": 1945,
             "lat": 52.2297,
             "lon": 21.0122,
             "info": "Returned to Warsaw after liberation and began working in a mechanical workshop.",
-            "shortCode": "post_war_return"
+            "shortCode": "post_war_return",
+            "cartesian": {
+                "x": 57.17688183171069,
+                "y": 79.04726144131665,
+                "z": -21.96211835481099
+            }
         },
         {
             "year": 1955,
             "lat": 52.2297,
             "lon": 21.0122,
             "info": "Legally changed his name from Israel Jozef Ajgenberg to Stanislaw Wierzba.",
-            "shortCode": "legal_name_change"
+            "shortCode": "legal_name_change",
+            "cartesian": {
+                "x": 57.17688183171069,
+                "y": 79.04726144131665,
+                "z": -21.96211835481099
+            }
         },
         {
             "year": 1990,
             "lat": 52.2297,
             "lon": 21.0122,
             "info": "Became active in Jewish organizations, including the Association of Jewish War Veterans and Victims of Persecutions during World War Two.",
-            "shortCode": "community_involvement"
+            "shortCode": "community_involvement",
+            "cartesian": {
+                "x": 57.17688183171069,
+                "y": 79.04726144131665,
+                "z": -21.96211835481099
+            }
         },
         {
             "year": 2005,
             "lat": 52.2297,
             "lon": 21.0122,
             "info": "Interviewed by Centropa, sharing his life story and experiences.",
-            "shortCode": "centropa_interview"
+            "shortCode": "centropa_interview",
+            "cartesian": {
+                "x": 57.17688183171069,
+                "y": 79.04726144131665,
+                "z": -21.96211835481099
+            }
         }
     ]
 }
