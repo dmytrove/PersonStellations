@@ -2,7 +2,6 @@ import * as THREE from 'three';
 import { latLongToCartesian } from './utils/coordinates.js';
 import { TooltipManager } from './ui/TooltipManager.js';
 import { DomeVisualizer } from './visualization/DomeVisualizer.js';
-import { StarAnimator } from './visualization/StarAnimator.js';
 import { TextSprite } from './visualization/TextSprite.js';
 
 export class StarVisualizer {
@@ -14,14 +13,10 @@ export class StarVisualizer {
         
         this.tooltipManager = new TooltipManager();
         this.domeVisualizer = new DomeVisualizer();
-        this.starAnimator = new StarAnimator();
         this.textSpriteManager = new TextSprite();
 
         this.geometryCache = new Map();
         this.materialCache = new Map();
-        this.lastFrameTime = 0;
-        this.TARGET_FRAME_RATE = 60;
-        this.FRAME_BUDGET = 1000 / 60; // 16.67ms target frame time
         this.isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         this.circleGeometry = null;
     }
@@ -34,8 +29,8 @@ export class StarVisualizer {
 
         let geometry;
         if (this.isMobileDevice) {
-            // Use a circle geometry for mobile (faces camera)
-            geometry = new THREE.CircleGeometry(0.4, 16);
+            // Use a larger circle geometry for mobile (faces camera)
+            geometry = new THREE.CircleGeometry(0.8, 16);
         } else {
             // Use sphere for desktop
             geometry = new THREE.SphereGeometry(0.6, 16, 16);
@@ -81,7 +76,6 @@ export class StarVisualizer {
         const radius = 50;
         const showGrid = !this.isMobileDevice && config.showGrid !== false;
         
-        // Create dome with optimized geometry for mobile
         if (showGrid) {
             const dome = this.domeVisualizer.createDome(radius, this.isMobileDevice);
             this.group.add(dome);
@@ -95,7 +89,6 @@ export class StarVisualizer {
         const sphereGeometry = this.createSphereGeometry();
         this.group.add(this.timelineLines);
 
-        // Batch creation for better performance
         const starBatch = new THREE.Group();
         const batchSize = 50;
         
@@ -105,19 +98,16 @@ export class StarVisualizer {
             batch.forEach((person, index) => {
                 const hue = ((i + index) / persons.length);
                 const color = new THREE.Color().setHSL(hue, 1, 0.5);
-                const glowColor = new THREE.Color().setHSL(hue, 1, 0.7);
                 
-                const materialKey = `${color.getHexString()}-${glowColor.getHexString()}`;
+                const materialKey = color.getHexString();
                 let material = this.materialCache.get(materialKey);
                 if (!material) {
-                    material = this.isMobileDevice ? 
-                        new THREE.MeshBasicMaterial({ 
-                            color: color,
-                            transparent: true,
-                            opacity: 0.8,
-                            side: THREE.DoubleSide 
-                        }) :
-                        this.starAnimator.createStarMaterial(color, glowColor);
+                    material = new THREE.MeshBasicMaterial({ 
+                        color: color,
+                        transparent: true,
+                        opacity: 0.8,
+                        side: THREE.DoubleSide 
+                    });
                     this.materialCache.set(materialKey, material);
                 }
 
@@ -125,7 +115,6 @@ export class StarVisualizer {
                 starBatch.add(...personStars);
             });
 
-            // Allow browser to process batch
             if (i + batchSize < persons.length) {
                 await new Promise(resolve => setTimeout(resolve, 0));
             }
@@ -133,7 +122,6 @@ export class StarVisualizer {
         
         this.group.add(starBatch);
 
-        // Reduce timeline opacity on mobile
         if (this.isMobileDevice) {
             this.timelineLines.children.forEach(line => {
                 if (line.material) {
@@ -144,10 +132,6 @@ export class StarVisualizer {
 
         scene.add(this.group);
         scene.userData.camera = config.camera;
-        
-        if (!this.isMobileDevice) {
-            this.starAnimator.setupLighting(scene);
-        }
         return this.group;
     }
 
@@ -163,10 +147,7 @@ export class StarVisualizer {
                 nickname: person.nickname,
                 year: event.year,
                 info: event.info,
-                shortCode: event.shortCode,
-                originalScale: 1.0,
-                // Only add pulse phase for desktop
-                ...(this.isMobileDevice ? {} : { pulsePhase: Math.random() * Math.PI * 2 })
+                shortCode: event.shortCode
             };
 
             const labelText = `${person.nickname} | ${event.shortCode} | ${event.year}`;
@@ -219,15 +200,6 @@ export class StarVisualizer {
     }
 
     setupInteractions(scene, config) {
-        if (!scene.userData.animationAdded) {
-            scene.userData.animationAdded = true;
-            const animate = () => {
-                requestAnimationFrame(animate);
-                this.starAnimator.updateStarAnimations(this.starMeshes);
-            };
-            animate();
-        }
-
         const raycaster = new THREE.Raycaster();
         const mouse = new THREE.Vector2();
         
@@ -284,19 +256,13 @@ export class StarVisualizer {
             const starYear = star.userData.year;
             const isPersonVisible = personVisibility[star.userData.person];
             const isInTimeRange = starYear >= startYear && starYear <= endYear;
-            let scale = 1.0;
+            const isVisible = isPersonVisible && isInTimeRange;
             
-            if (!isPersonVisible || !isInTimeRange) {
-                scale = 0.0;
-            }
-            
-            star.userData.originalScale = scale;
-            star.visible = scale > 0;
+            star.visible = isVisible;
 
             const textSprite = this.textSprites[index];
             if (textSprite) {
-                textSprite.visible = scale > 0;
-                textSprite.material.opacity = scale;
+                textSprite.visible = isVisible;
             }
         });
 
@@ -310,30 +276,6 @@ export class StarVisualizer {
             line.visible = isVisible;
             if (line.material) {
                 line.material.opacity = isVisible ? 0.3 : 0;
-            }
-        });
-    }
-
-    // Add frame rate control
-    updateAnimation(time) {
-        if (this.isMobileDevice) {
-            // No animation for mobile devices to improve performance
-            return;
-        }
-
-        // Desktop animation
-        const deltaTime = time - this.lastFrameTime;
-        if (deltaTime < this.FRAME_BUDGET) {
-            return; // Skip frame if we're running too fast
-        }
-        this.lastFrameTime = time;
-        
-        // Update animations with delta time
-        this.starMeshes.forEach(mesh => {
-            if (mesh.userData.pulsePhase !== undefined) {
-                mesh.userData.pulsePhase += deltaTime * 0.001;
-                const scale = 1 + Math.sin(mesh.userData.pulsePhase) * 0.1;
-                mesh.scale.setScalar(scale * mesh.userData.originalScale);
             }
         });
     }

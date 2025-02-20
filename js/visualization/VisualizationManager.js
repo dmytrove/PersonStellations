@@ -28,7 +28,6 @@ export class VisualizationManager {
     async createVisualization(persons) {
         const radius = 50;
         
-        // Add geodesic lines with explicit color
         const geodesicLines = this.geodesic.createLines(
             radius, 
             config.geodesicCount, 
@@ -36,17 +35,15 @@ export class VisualizationManager {
         );
         this.group.add(geodesicLines);
 
-        // Create stars and labels for each person
         persons.forEach((person, index) => {
             const hue = index / persons.length;
             const color = new THREE.Color().setHSL(hue, 1, 0.5);
-            const glowColor = new THREE.Color().setHSL(hue, 1, 0.7);
             
             const personStars = [];
             
             person.events.forEach(event => {
                 const pos = latLongToCartesian(event.lat, event.lon, radius);
-                const star = this.starMesh.create(pos, color, glowColor, {
+                const star = this.starMesh.create(pos, color, null, {
                     person: person.name,
                     year: event.year,
                     info: event.info
@@ -140,12 +137,6 @@ export class VisualizationManager {
         });
         
         this.timeline.updateVisibility(config.startYear, config.endYear, config.personVisibility);
-    }
-
-    updateAnimation(time) {
-        this.stars.forEach(star => {
-            this.starMesh.updateAnimation(star, time);
-        });
     }
 
     updateGeodesicColor(color) {

@@ -105,8 +105,7 @@ export class App {
 
         this.lastRenderTime = timestamp;
         
-        const time = performance.now() * 0.001;
-        this.visualizationManager.updateAnimation(time);
+        // Only update input and render
         this.inputManager.update(this.sceneManager.group, config);
         this.sceneManager.render();
         
