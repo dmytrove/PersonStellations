@@ -41,7 +41,7 @@ export class PersonsFolderManager {
                     const controller = categoryFolder.controllers.find(c => c.property === person.name);
                     if (controller) controller.updateDisplay();
                 });
-                this.app.updateStarVisibility();
+                this.app.visualizationManager.updateStarVisibility();
             }
         };
         categoryFolder.add(toggleAllConfig, `toggleAll${categoryFolder.title}`).name('Toggle All');
@@ -49,7 +49,7 @@ export class PersonsFolderManager {
         persons.forEach(person => {
             config.personVisibility[person.name] = true;
             categoryFolder.add(config.personVisibility, person.name).onChange(() => {
-                this.app.updateStarVisibility();
+                this.app.visualizationManager.updateStarVisibility();
             });
         });
     }

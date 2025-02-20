@@ -5,7 +5,7 @@ export class Geodesic {
     constructor() {
         this.lines = new THREE.Group();
         this.theme = config.isDarkTheme ? config.darkTheme : config.lightTheme;
-        this.defaultColor = this.theme.geodesicColor || '#1a1a1a';
+        this.defaultColor = this.theme.geodesicColor;
     }
 
     createLines(radius, count, color) {
@@ -20,7 +20,7 @@ export class Geodesic {
         });
         
         this.createMeridianLines(lineRadius, count, lineMaterial);
-        this.createParallelLines(lineRadius, count, lineMaterial, actualColor);
+        this.createParallelLines(lineRadius, count, lineMaterial);
         
         return this.lines;
     }
@@ -42,7 +42,7 @@ export class Geodesic {
         }
     }
 
-    createParallelLines(radius, count, material, color = '#1a1a1a') {
+    createParallelLines(radius, count, material) {
         const latitudeSteps = Math.floor(count/2);
         for (let i = 0; i <= latitudeSteps; i++) {
             const phi = (i / latitudeSteps) * Math.PI/2;
@@ -61,7 +61,7 @@ export class Geodesic {
             
             if (i === 0) {
                 const equatorMaterial = new THREE.LineBasicMaterial({
-                    color: new THREE.Color(color),
+                    color: new THREE.Color(this.theme.equatorColor),
                     transparent: true,
                     opacity: 0.5,
                     depthWrite: false,
@@ -87,7 +87,12 @@ export class Geodesic {
     updateColor(color) {
         this.lines.traverse((object) => {
             if (object instanceof THREE.Line) {
-                object.material.color = new THREE.Color(color);
+                if (object.material.opacity === 0.5) {
+                    // This is the equator line
+                    object.material.color = new THREE.Color(this.theme.equatorColor);
+                } else {
+                    object.material.color = new THREE.Color(color);
+                }
             }
         });
     }

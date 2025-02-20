@@ -38,6 +38,37 @@ export class TextSprite {
     }
 
     updateTheme(sprite, text, config) {
-        return this.createSprite(text, config); // Create a new sprite with updated theme
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = 2048;
+        canvas.height = 1024;
+
+        const theme = config.isDarkTheme ? config.darkTheme : config.lightTheme;
+        
+        // Set up text style
+        context.font = 'Bold 96px Arial';
+        context.textAlign = 'center';
+        
+        // Draw outline in opposite color with 60% opacity
+        context.strokeStyle = config.isDarkTheme ? 'rgba(0, 0, 0, 0.6)' : 'rgba(255, 255, 255, 0.6)';
+        context.lineWidth = 12;
+        context.strokeText(text, 1024, 512);
+        
+        // Draw main text
+        context.fillStyle = theme.textColor;
+        context.fillText(text, 1024, 512);
+
+        // Update existing sprite's material
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.minFilter = THREE.LinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        
+        if (sprite.material.map) {
+            sprite.material.map.dispose();
+        }
+        sprite.material.map = texture;
+        sprite.material.needsUpdate = true;
+        
+        return sprite;
     }
 }

@@ -44,6 +44,10 @@ export class GUIManager {
                 const theme = value ? 'dark' : 'light';
                 this.gui.domElement.classList.remove('theme-dark', 'theme-light');
                 this.gui.domElement.classList.add(`theme-${theme}`);
+                // Update tooltip theme
+                if (this.app.visualizationManager && this.app.visualizationManager.tooltipManager) {
+                    this.app.visualizationManager.tooltipManager.updateTheme(value);
+                }
             });
     }
 
@@ -63,6 +67,14 @@ export class GUIManager {
         sceneFolder.addColor(config, 'backgroundColor').onChange((value) => {
             if (this.app.scene) {
                 this.app.scene.background = new THREE.Color(value);
+            }
+        });
+
+        // Add lines color picker
+        const theme = config.isDarkTheme ? config.darkTheme : config.lightTheme;
+        sceneFolder.addColor(theme, 'geodesicColor').name('Lines Color').onChange((value) => {
+            if (this.app.visualizationManager) {
+                this.app.visualizationManager.updateGeodesicColor(value);
             }
         });
     }

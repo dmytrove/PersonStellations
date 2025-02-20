@@ -3,18 +3,18 @@ export const themeConfig = {
     darkTheme: {
         backgroundColor: '#000000',
         textColor: '#ffffff',
-        geodesicColor: '#1a1a1a',
+        geodesicColor: '#ff0000',
         guiTheme: 'dark',
-        lineColor: '#1a1a1a',
-        equatorColor: '#2a2a2a'
+        lineColor: '#ff0000',
+        equatorColor: '#ff3333'
     },
     lightTheme: {
         backgroundColor: '#ffffff',
         textColor: '#000000',
-        geodesicColor: '#e6e6e6',
+        geodesicColor: '#0000ff',
         guiTheme: 'light',
-        lineColor: '#e6e6e6',
-        equatorColor: '#d6d6d6'
+        lineColor: '#0000ff',
+        equatorColor: '#3333ff'
     }
 };
 

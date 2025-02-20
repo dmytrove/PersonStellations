@@ -1,65 +1,41 @@
-import { getFamousBios } from './famousBioLoader.js';
-import { getCentropaBios } from './centropaBioLoader.js';
-
-async function getCentropaBioIds() {
-    return ['edith-umova', 'michal-warzager', 'stanislaw-wierzba'];
-}
-
-async function getBioFolders() {
-    return ['Famous', 'centropa'];
-}
-
-async function getBiosFromFolder(folder) {
+async function getBioIndex() {
     try {
-        if (folder === 'Famous') {
-            const famousBioIds = [
-                'aristotle', 'austen', 'cleopatra', 'curie', 'darwin',
-                'davinci', 'einstein', 'gandhi', 'kahlo', 'keller',
-                'lovelace', 'mandela', 'mozart', 'nightingale', 'pasteur',
-                'picasso', 'shakespeare', 'tesla', 'vangogh', 'victoria'
-            ];
-            
-            return await Promise.all(
-                famousBioIds.map(async (id) => {
-                    const bioResponse = await fetch(`bios/Famous/${id}.json`);
-                    if (!bioResponse.ok) {
-                        console.error(`Failed to load bio for ${id}`);
-                        return null;
-                    }
-                    const bio = await bioResponse.json();
-                    bio.category = 'Famous';
-                    return bio;
-                })
-            );
-        } else {
-            const bioIds = await getCentropaBioIds();
-            return await Promise.all(
-                bioIds.map(async (id) => {
-                    const bioResponse = await fetch(`bios/${folder}/${id}.json`);
-                    if (!bioResponse.ok) {
-                        console.error(`Failed to load bio for ${id}`);
-                        return null;
-                    }
-                    const bio = await bioResponse.json();
-                    bio.category = folder;
-                    return bio;
-                })
-            );
+        const response = await fetch('bios/index.json');
+        if (!response.ok) {
+            throw new Error('Failed to load bio index');
         }
+        return await response.json();
     } catch (error) {
-        console.error(`Error loading bios from folder ${folder}:`, error);
-        return [];
+        console.error('Error loading bio index:', error);
+        return { categories: {} };
+    }
+}
+
+async function loadBioFromFile(folder, id) {
+    try {
+        const bioResponse = await fetch(`bios/${folder}/${id}.json`);
+        if (!bioResponse.ok) {
+            console.error(`Failed to load bio for ${id}`);
+            return null;
+        }
+        const bio = await bioResponse.json();
+        bio.category = folder;
+        return bio;
+    } catch (error) {
+        console.error(`Error loading bio ${id}:`, error);
+        return null;
     }
 }
 
 export async function loadBiosData() {
     try {
-        const [famousBios, centropaBios] = await Promise.all([
-            getFamousBios(),
-            getCentropaBios()
-        ]);
-        
-        return [...famousBios, ...centropaBios];
+        const index = await getBioIndex();
+        const allBios = await Promise.all(
+            Object.entries(index.categories).flatMap(([folder, { files }]) =>
+                files.map(id => loadBioFromFile(folder, id))
+            )
+        );
+        return allBios.filter(bio => bio !== null);
     } catch (error) {
         console.error('Error loading bios data:', error);
         return [];

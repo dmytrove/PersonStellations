@@ -5,6 +5,10 @@ import { InputManager } from '../input-manager.js';
 import { GUIManager } from '../ui/GUI.js';
 import { SceneManager } from '../visualization/SceneManager.js';
 import { VisualizationManager } from '../visualization/VisualizationManager.js';
+import { GUI } from 'lil-gui';
+import { InfoFolderManager } from '../ui/folders/InfoFolder.js';
+import { ControlsFolderManager } from '../ui/folders/ControlsFolder.js';
+import { PersonsFolderManager } from '../ui/folders/PersonsFolder.js';
 
 export class App {
     constructor() {
@@ -27,7 +31,7 @@ export class App {
 
     async init() {
         await this.loadData();
-        this.guiManager.setupGUI();
+        this.setupGUI();
         this.inputManager.setCamera(this.sceneManager.camera);
         this.setupEventListeners();
         this.startAnimation();
@@ -40,6 +44,7 @@ export class App {
         this.sceneManager.setBackground(theme.backgroundColor);
         this.visualizationManager.updateGeodesicColor(theme.geodesicColor);
         this.visualizationManager.updateLabels();
+        this.visualizationManager.tooltipManager.updateTheme(isDark);
     }
 
     async loadData() {
@@ -95,5 +100,46 @@ export class App {
 
     startAnimation() {
         this.animate();
+    }
+
+    setupGUI() {
+        this.gui = new GUI(); // Store GUI instance
+        this.gui.domElement.classList.add(config.isDarkTheme ? 'theme-dark' : 'theme-light');
+        
+        if (window.innerWidth <= 768) {
+            this.gui.close();
+        }
+
+        // Add folders
+        const infoFolderManager = new InfoFolderManager();
+        infoFolderManager.setupFolder(this.gui);
+
+        const personsFolderManager = new PersonsFolderManager(this);
+        personsFolderManager.setupFolder(this.gui);
+
+        const controlsFolderManager = new ControlsFolderManager(this);
+        controlsFolderManager.setupFolder(this.gui);
+
+        const appearanceFolder = this.gui.addFolder('Appearance');
+        appearanceFolder.open(false);
+        appearanceFolder.add(config, 'isDarkTheme')
+            .name('Dark Theme')
+            .onChange((value) => {
+                this.applyTheme(value);
+                this.gui.domElement.classList.toggle('theme-dark', value);
+                this.gui.domElement.classList.toggle('theme-light', !value);
+            });
+
+        const cameraFolder = this.gui.addFolder('Camera');
+        cameraFolder.open(false);
+        cameraFolder.add(config, 'cameraDistance', 0, 50).onChange((value) => {
+            this.camera.position.z = value;
+        });
+
+        const sceneFolder = this.gui.addFolder('Scene');
+        sceneFolder.open(false);
+        sceneFolder.addColor(config, 'backgroundColor').onChange((value) => {
+            this.sceneManager.setBackground(value);
+        });
     }
 }
