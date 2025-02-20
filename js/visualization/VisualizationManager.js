@@ -21,6 +21,7 @@ export class VisualizationManager {
         this.tooltipManager = new TooltipManager();
         this.raycaster = new THREE.Raycaster();
         this.mouse = new THREE.Vector2();
+        this.isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         this.setupTooltips();
     }
 
@@ -70,9 +71,12 @@ export class VisualizationManager {
     }
 
     setupTooltips() {
-        window.addEventListener('mousemove', (event) => {
-            this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-            this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        const handlePointerEvent = (event) => {
+            const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+            const clientY = event.touches ? event.touches[0].clientY : event.clientY;
+            
+            this.mouse.x = (clientX / window.innerWidth) * 2 - 1;
+            this.mouse.y = -(clientY / window.innerHeight) * 2 + 1;
 
             if (this.raycaster.camera) {
                 this.raycaster.setFromCamera(this.mouse, this.raycaster.camera);
@@ -81,12 +85,30 @@ export class VisualizationManager {
                 if (intersects.length > 0) {
                     const star = intersects[0].object;
                     const tooltipContent = `${star.userData.person}<br>${star.userData.info}<br>Year: ${star.userData.year}`;
-                    this.tooltipManager.show(tooltipContent, event.clientX, event.clientY);
-                } else {
+                    // Position tooltip above the touch point on mobile
+                    const yOffset = this.isMobileDevice ? -100 : 10;
+                    this.tooltipManager.show(tooltipContent, clientX, clientY + yOffset);
+                } else if (!this.isMobileDevice) {
+                    // Only hide tooltip on mousemove when not on mobile
                     this.tooltipManager.hide();
                 }
             }
-        });
+        };
+
+        if (this.isMobileDevice) {
+            // Mobile touch events
+            window.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                handlePointerEvent(e);
+            }, { passive: false });
+            
+            window.addEventListener('touchmove', (e) => {
+                e.preventDefault(); // Prevent scrolling while touching stars
+            }, { passive: false });
+        } else {
+            // Desktop mouse events
+            window.addEventListener('mousemove', handlePointerEvent);
+        }
     }
 
     setCamera(camera) {
