@@ -4,11 +4,15 @@ export class DomeVisualizer {
     constructor() {
         this.dome = null;
         this.geodesicLines = new THREE.Group();
+        this.isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        this.frustumCuller = new THREE.Frustum();
+        this.visibilityCache = new Map();
     }
 
-    createDome(radius) {
+    createDome(radius, useMobile = false) {
+        const segments = useMobile ? 16 : 32;
         const domeRadius = radius * 1.001;
-        const geometry = new THREE.SphereGeometry(domeRadius, 32, 32);
+        const geometry = new THREE.SphereGeometry(domeRadius, segments, segments);
         const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
             color: 0xffffff,
             transparent: true,
@@ -23,6 +27,11 @@ export class DomeVisualizer {
     }
 
     createGeodesicLines(radius, count, color) {
+        if (this.isMobileDevice) {
+            // Return empty group for mobile
+            return this.geodesicLines;
+        }
+        
         const lineRadius = radius * 1.001;
         const lineMaterial = new THREE.LineBasicMaterial({ 
             color: color,
@@ -98,10 +107,49 @@ export class DomeVisualizer {
     }
 
     updateVisibility(config) {
+        if (this.isMobileDevice) {
+            // Hide all grid elements on mobile
+            if (this.dome) this.dome.visible = false;
+            this.geodesicLines.visible = false;
+            return;
+        }
+
         if (this.dome) {
             this.dome.visible = config.domeVisible;
             this.dome.material.opacity = config.domeOpacity;
         }
         this.geodesicLines.visible = config.geodesicLines;
+    }
+
+    updateCulling(camera) {
+        if (!this.isMobileDevice) return;
+
+        const matrix = new THREE.Matrix4();
+        matrix.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
+        this.frustumCuller.setFromProjectionMatrix(matrix);
+
+        // Cache visibility state to avoid unnecessary updates
+        this.geodesicLines.traverse(object => {
+            const cacheKey = object.uuid;
+            const wasVisible = this.visibilityCache.get(cacheKey);
+            const isVisible = this.frustumCuller.intersectsObject(object);
+            
+            if (wasVisible !== isVisible) {
+                object.visible = isVisible;
+                this.visibilityCache.set(cacheKey, isVisible);
+            }
+        });
+    }
+
+    dispose() {
+        if (this.dome) {
+            this.dome.geometry.dispose();
+            this.dome.material.dispose();
+        }
+        this.geodesicLines.traverse(object => {
+            if (object.geometry) object.geometry.dispose();
+            if (object.material) object.material.dispose();
+        });
+        this.visibilityCache.clear();
     }
 }
