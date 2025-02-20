@@ -16,10 +16,22 @@ export class StarVisualizer {
         this.domeVisualizer = new DomeVisualizer();
         this.starAnimator = new StarAnimator();
         this.textSpriteManager = new TextSprite();
+
+        this.geometryCache = new Map();
+        this.materialCache = new Map();
+        this.lastFrameTime = 0;
+        this.TARGET_FRAME_RATE = 60;
+        this.FRAME_BUDGET = 1000 / 60; // 16.67ms target frame time
     }
 
     createSphereGeometry() {
-        return new THREE.SphereGeometry(0.6, 32, 32);
+        const cacheKey = 'sphere';
+        if (this.geometryCache.has(cacheKey)) {
+            return this.geometryCache.get(cacheKey);
+        }
+        const geometry = new THREE.SphereGeometry(0.6, 16, 16); // Reduced segments for mobile
+        this.geometryCache.set(cacheKey, geometry);
+        return geometry;
     }
 
     createArcPoints(start, end, radius, segments = 50) {
@@ -56,12 +68,17 @@ export class StarVisualizer {
         this.clearScene(scene);
         
         const radius = 50;
+        const useSimplifiedGeometry = window.navigator.userAgent.includes('iPhone');
         
-        // Create dome and geodesic lines
-        const dome = this.domeVisualizer.createDome(radius);
+        // Create dome with optimized geometry for mobile
+        const dome = this.domeVisualizer.createDome(radius, useSimplifiedGeometry);
         this.group.add(dome);
         
-        const geodesicLines = this.domeVisualizer.createGeodesicLines(radius, config.geodesicCount, config.geodesicColor);
+        const geodesicLines = this.domeVisualizer.createGeodesicLines(
+            radius, 
+            useSimplifiedGeometry ? Math.floor(config.geodesicCount / 2) : config.geodesicCount,
+            config.geodesicColor
+        );
         this.group.add(geodesicLines);
         
         this.domeVisualizer.updateVisibility(config);
@@ -69,19 +86,31 @@ export class StarVisualizer {
         const sphereGeometry = this.createSphereGeometry();
         this.group.add(this.timelineLines);
 
-        // Create stars and timelines for each person
+        // Batch creation for better performance
+        const starBatch = new THREE.Group();
         persons.forEach((person, personIndex) => {
             const hue = personIndex / persons.length;
             const color = new THREE.Color().setHSL(hue, 1, 0.5);
             const glowColor = new THREE.Color().setHSL(hue, 1, 0.7);
-            const material = this.starAnimator.createStarMaterial(color, glowColor);
+            
+            // Cache and reuse materials
+            const materialKey = `${color.getHexString()}-${glowColor.getHexString()}`;
+            let material = this.materialCache.get(materialKey);
+            if (!material) {
+                material = this.starAnimator.createStarMaterial(color, glowColor);
+                this.materialCache.set(materialKey, material);
+            }
 
             const personStars = this.createPersonStars(person, sphereGeometry, material, radius, config);
-            this.createTimelineForPerson(personStars, color);
+            starBatch.add(...personStars);
         });
+        this.group.add(starBatch);
 
-        this.setupInteractions(scene, config);
-        
+        // Clear caches when appropriate
+        if (this.materialCache.size > 100) {
+            this.materialCache.clear();
+        }
+
         scene.add(this.group);
         scene.userData.camera = config.camera;
         
@@ -186,17 +215,24 @@ export class StarVisualizer {
     }
 
     clearScene(scene) {
-        this.starMeshes.forEach(mesh => this.group.remove(mesh));
-        this.textSprites.forEach(sprite => this.group.remove(sprite));
-        if (this.group.parent) {
-            scene.remove(this.group);
-        }
-        this.starMeshes = [];
-        this.textSprites = [];
-        this.group = new THREE.Group();
-        if (this.timelineLines) {
-            this.group.remove(this.timelineLines);
-        }
+        // Dispose of geometries and materials
+        this.group.traverse(object => {
+            if (object.geometry) {
+                object.geometry.dispose();
+            }
+            if (object.material) {
+                if (Array.isArray(object.material)) {
+                    object.material.forEach(material => material.dispose());
+                } else {
+                    object.material.dispose();
+                }
+            }
+        });
+
+        this.starMeshes.length = 0;
+        this.textSprites.length = 0;
+        this.group.clear();
+        this.timelineLines.clear();
     }
 
     updateTextColors(config) {
@@ -242,5 +278,29 @@ export class StarVisualizer {
                 line.material.opacity = isVisible ? 0.3 : 0;
             }
         });
+    }
+
+    // Add frame rate control
+    updateAnimation(time) {
+        const deltaTime = time - this.lastFrameTime;
+        if (deltaTime < this.FRAME_BUDGET) {
+            return; // Skip frame if we're running too fast
+        }
+        this.lastFrameTime = time;
+        
+        // Update animations with delta time
+        this.starMeshes.forEach(mesh => {
+            if (mesh.userData.pulsePhase !== undefined) {
+                mesh.userData.pulsePhase += deltaTime * 0.001;
+                const scale = 1 + Math.sin(mesh.userData.pulsePhase) * 0.1;
+                mesh.scale.setScalar(scale * mesh.userData.originalScale);
+            }
+        });
+    }
+
+    dispose() {
+        this.clearScene();
+        this.geometryCache.clear();
+        this.materialCache.clear();
     }
 }
