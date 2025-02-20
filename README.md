@@ -2,9 +2,6 @@
 
 An interactive visualization of historical figures and their connections displayed as a celestial constellation.
 
-## Live Demo ✨
-**[Experience the Live Visualization Here](https://dmytrove.github.io/PersonStellations/)**
-
 ## Local Development
 1. Clone the repository
 2. Open index.html in a web browser

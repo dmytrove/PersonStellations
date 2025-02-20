@@ -1,3 +1,8 @@
+import { MouseInputManager } from './input/MouseInputManager.js';
+import { TouchInputManager } from './input/TouchInputManager.js';
+import { WheelInputManager } from './input/WheelInputManager.js';
+import { config } from './config/index.js';
+
 export class InputManager {
     constructor() {
         this.isDragging = false;
@@ -6,6 +11,11 @@ export class InputManager {
         this.currentRotation = { x: 0, y: 0 };
         this.pinchStartDistance = 0;
         this.camera = null;
+
+        // Initialize input managers
+        this.mouseInput = new MouseInputManager(this);
+        this.touchInput = new TouchInputManager(this);
+        this.wheelInput = new WheelInputManager(this);
     }
 
     setCamera(camera) {
@@ -41,7 +51,7 @@ export class InputManager {
             if (this.pinchStartDistance > 0 && this.camera) {
                 const scale = currentDistance / this.pinchStartDistance;
                 const newDistance = this.camera.position.z / scale;
-                this.camera.position.z = Math.min(Math.max(newDistance, 0), 50); // Reduced minimum distance from 5 to 2
+                this.camera.position.z = Math.min(Math.max(newDistance, 0), 50);
                 config.cameraDistance = this.camera.position.z;
             }
             this.pinchStartDistance = currentDistance;
@@ -62,86 +72,15 @@ export class InputManager {
         }
     }
 
-    handleWheel(event, config) {
-        if (!this.camera) return;
-        
-        event.preventDefault();
-        const zoomSpeed = 0.1;
-        const delta = -Math.sign(event.deltaY) * zoomSpeed;
-        const newDistance = this.camera.position.z * (1 - delta);
-        
-        // Clamp between min (2) and max (50) distance
-        this.camera.position.z = Math.min(Math.max(newDistance, 0), 50); // Reduced minimum distance from 5 to 2
-        config.cameraDistance = this.camera.position.z;
-    }
-
     end() {
         this.isDragging = false;
         this.pinchStartDistance = 0;
     }
 
     setupEventListeners(canvas, config) {
-        // Mouse events
-        canvas.addEventListener('mousedown', (event) => {
-            event.preventDefault();
-            this.start(event.clientX, event.clientY);
-        });
-
-        canvas.addEventListener('mousemove', (event) => {
-            event.preventDefault();
-            this.move(event.clientX, event.clientY, config);
-        });
-
-        canvas.addEventListener('mouseup', (event) => {
-            event.preventDefault();
-            this.end();
-        });
-
-        canvas.addEventListener('mouseleave', (event) => {
-            event.preventDefault();
-            this.end();
-        });
-
-        // Mouse wheel zoom
-        canvas.addEventListener('wheel', (event) => {
-            this.handleWheel(event, config);
-        }, { passive: false });
-
-        // Touch events
-        canvas.addEventListener('touchstart', (event) => {
-            event.preventDefault();
-            if (event.touches.length === 2) {
-                this.start(0, 0, event.touches);
-            } else {
-                const touch = event.touches[0];
-                this.start(touch.clientX, touch.clientY);
-            }
-        });
-
-        canvas.addEventListener('touchmove', (event) => {
-            event.preventDefault();
-            if (event.touches.length === 2) {
-                this.move(0, 0, config, event.touches);
-            } else {
-                const touch = event.touches[0];
-                this.move(touch.clientX, touch.clientY, config);
-            }
-        });
-
-        canvas.addEventListener('touchend', (event) => {
-            event.preventDefault();
-            this.end();
-        });
-
-        canvas.addEventListener('touchcancel', (event) => {
-            event.preventDefault();
-            this.end();
-        });
-
-        // Prevent default touch behavior
-        document.body.addEventListener('touchmove', (event) => {
-            event.preventDefault();
-        }, { passive: false });
+        this.mouseInput.setupEventListeners(canvas, config);
+        this.touchInput.setupEventListeners(canvas, config);
+        this.wheelInput.setupEventListeners(canvas, config);
     }
 
     update(stars, config) {
@@ -155,15 +94,28 @@ export class InputManager {
 
             // Auto-rotation when enabled and not dragging
             if (config.autoRotate && !this.isDragging) {
-                this.targetRotation.y += config.rotationSpeed;
+                // Use rotationSpeed from config
+                this.targetRotation.y += config.rotationSpeed || 0.001;
             }
         }
     }
 
     reset() {
+        // Reset rotation state
         this.targetRotation.x = 0;
         this.targetRotation.y = 0;
         this.currentRotation.x = 0;
         this.currentRotation.y = 0;
+
+        // Reset interaction state
+        this.isDragging = false;
+        this.pinchStartDistance = 0;
+        this.previousPosition = { x: 0, y: 0 };
+
+        // Reset camera to initial position if available
+        if (this.camera && typeof config !== 'undefined') {
+            this.camera.position.z = config.cameraDistance;
+            this.camera.updateProjectionMatrix();
+        }
     }
 }

@@ -8,16 +8,16 @@
 </head>
 <body class="theme-dark">
     <div class="info">Drag or swipe to pan</div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script type="importmap">
     {
         "imports": {
+            "three": "https://unpkg.com/three@0.128.0/build/three.module.js",
             "lil-gui": "https://cdn.jsdelivr.net/npm/lil-gui@0.18/+esm"
         }
     }
     </script>
     <script type="module">
-        import { App } from './js/main.js';
+        import { App } from './js/core/App.js';
         new App();
     </script>
 </body>

@@ -1,0 +1,35 @@
+{
+    "categories": {
+        "Famous": {
+            "files": [
+                "aristotle",
+                "austen",
+                "cleopatra",
+                "curie",
+                "darwin",
+                "davinci",
+                "einstein",
+                "gandhi",
+                "kahlo",
+                "keller",
+                "lovelace",
+                "mandela",
+                "mozart",
+                "nightingale",
+                "pasteur",
+                "picasso",
+                "shakespeare",
+                "tesla",
+                "vangogh",
+                "victoria"
+            ]
+        },
+        "Centropa": {
+            "files": [
+                "edith-umova",
+                "michal-warzager",
+                "stanislaw-wierzba"
+            ]
+        }
+    }
+}
