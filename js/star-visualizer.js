@@ -165,7 +165,8 @@ export class StarVisualizer {
                 info: event.info,
                 shortCode: event.shortCode,
                 originalScale: 1.0,
-                pulsePhase: Math.random() * Math.PI * 2
+                // Only add pulse phase for desktop
+                ...(this.isMobileDevice ? {} : { pulsePhase: Math.random() * Math.PI * 2 })
             };
 
             const labelText = `${person.nickname} | ${event.shortCode} | ${event.year}`;
@@ -316,36 +317,25 @@ export class StarVisualizer {
     // Add frame rate control
     updateAnimation(time) {
         if (this.isMobileDevice) {
-            // Minimal animation for mobile
-            const deltaTime = time - this.lastFrameTime;
-            if (deltaTime < this.FRAME_BUDGET * 2) { // Double the frame budget for mobile
-                return;
-            }
-            this.lastFrameTime = time;
-            
-            // Simple opacity pulse instead of scale animation
-            this.starMeshes.forEach(mesh => {
-                if (mesh.visible && mesh.material) {
-                    mesh.material.opacity = 0.8 + Math.sin(time * 2) * 0.2;
-                }
-            });
-        } else {
-            // Desktop animation
-            const deltaTime = time - this.lastFrameTime;
-            if (deltaTime < this.FRAME_BUDGET) {
-                return; // Skip frame if we're running too fast
-            }
-            this.lastFrameTime = time;
-            
-            // Update animations with delta time
-            this.starMeshes.forEach(mesh => {
-                if (mesh.userData.pulsePhase !== undefined) {
-                    mesh.userData.pulsePhase += deltaTime * 0.001;
-                    const scale = 1 + Math.sin(mesh.userData.pulsePhase) * 0.1;
-                    mesh.scale.setScalar(scale * mesh.userData.originalScale);
-                }
-            });
+            // No animation for mobile devices to improve performance
+            return;
         }
+
+        // Desktop animation
+        const deltaTime = time - this.lastFrameTime;
+        if (deltaTime < this.FRAME_BUDGET) {
+            return; // Skip frame if we're running too fast
+        }
+        this.lastFrameTime = time;
+        
+        // Update animations with delta time
+        this.starMeshes.forEach(mesh => {
+            if (mesh.userData.pulsePhase !== undefined) {
+                mesh.userData.pulsePhase += deltaTime * 0.001;
+                const scale = 1 + Math.sin(mesh.userData.pulsePhase) * 0.1;
+                mesh.scale.setScalar(scale * mesh.userData.originalScale);
+            }
+        });
     }
 
     dispose() {
