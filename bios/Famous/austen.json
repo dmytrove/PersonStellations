@@ -3,10 +3,65 @@
     "nickname": "Jane",
     "wiki": "https://en.wikipedia.org/wiki/Jane_Austen",
     "events": [
-        { "year": 1775, "lat": 51.2390, "lon": -1.0577, "info": "Born in Steventon, Hampshire", "shortCode": "born" },
-        { "year": 1795, "lat": 51.2390, "lon": -1.0577, "info": "Wrote First Drafts of Pride and Prejudice", "shortCode": "pride" },
-        { "year": 1811, "lat": 51.3844, "lon": -1.1565, "info": "Published Sense and Sensibility", "shortCode": "sense" },
-        { "year": 1813, "lat": 51.0632, "lon": -1.3081, "info": "Published Pride and Prejudice", "shortCode": "publish" },
-        { "year": 1817, "lat": 51.0632, "lon": -1.3081, "info": "Died in Winchester", "shortCode": "died" }
+        {
+            "year": 1775,
+            "lat": 51.239,
+            "lon": -1.0577,
+            "info": "Born in Steventon, Hampshire",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 62.59665127522911,
+                "y": 77.97643000408465,
+                "z": 1.155687217825876
+            }
+        },
+        {
+            "year": 1795,
+            "lat": 51.239,
+            "lon": -1.0577,
+            "info": "Wrote First Drafts of Pride and Prejudice",
+            "shortCode": "pride",
+            "cartesian": {
+                "x": 62.59665127522911,
+                "y": 77.97643000408465,
+                "z": 1.155687217825876
+            }
+        },
+        {
+            "year": 1811,
+            "lat": 51.3844,
+            "lon": -1.1565,
+            "info": "Published Sense and Sensibility",
+            "shortCode": "sense",
+            "cartesian": {
+                "x": 62.39652286156639,
+                "y": 78.13505789048608,
+                "z": 1.2596282135661885
+            }
+        },
+        {
+            "year": 1813,
+            "lat": 51.0632,
+            "lon": -1.3081,
+            "info": "Published Pride and Prejudice",
+            "shortCode": "publish",
+            "cartesian": {
+                "x": 62.8298996568941,
+                "y": 77.7839659187266,
+                "z": 1.434696852648467
+            }
+        },
+        {
+            "year": 1817,
+            "lat": 51.0632,
+            "lon": -1.3081,
+            "info": "Died in Winchester",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 62.8298996568941,
+                "y": 77.7839659187266,
+                "z": 1.434696852648467
+            }
+        }
     ]
 }

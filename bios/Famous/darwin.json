@@ -3,10 +3,65 @@
     "nickname": "Charles",
     "wiki": "https://en.wikipedia.org/wiki/Charles_Darwin",
     "events": [
-        { "year": 1809, "lat": 52.7069, "lon": -2.7516, "info": "Born in Shrewsbury, England", "shortCode": "born" },
-        { "year": 1831, "lat": -33.8688, "lon": 151.2093, "info": "Began voyage on HMS Beagle", "shortCode": "beagle" },
-        { "year": 1835, "lat": -0.7393, "lon": -90.3518, "info": "Visited Galapagos Islands", "shortCode": "galapagos" },
-        { "year": 1859, "lat": 51.5074, "lon": -0.1278, "info": "Published On the Origin of Species", "shortCode": "origin" },
-        { "year": 1882, "lat": 51.3397, "lon": 0.0512, "info": "Died in Downe, Kent", "shortCode": "died" }
+        {
+            "year": 1809,
+            "lat": 52.7069,
+            "lon": -2.7516,
+            "info": "Born in Shrewsbury, England",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 60.51940326977193,
+                "y": 79.55464528868224,
+                "z": 2.908649319300638
+            }
+        },
+        {
+            "year": 1831,
+            "lat": -33.8688,
+            "lon": 151.2093,
+            "info": "Began voyage on HMS Beagle",
+            "shortCode": "beagle",
+            "cartesian": {
+                "x": -72.7676268409314,
+                "y": -55.72930491559925,
+                "z": -39.98896169648727
+            }
+        },
+        {
+            "year": 1835,
+            "lat": -0.7393,
+            "lon": -90.3518,
+            "info": "Visited Galapagos Islands",
+            "shortCode": "galapagos",
+            "cartesian": {
+                "x": -0.6139518598952148,
+                "y": -1.2902861113557549,
+                "z": 99.98979060316395
+            }
+        },
+        {
+            "year": 1859,
+            "lat": 51.5074,
+            "lon": -0.1278,
+            "info": "Published On the Origin of Species",
+            "shortCode": "origin",
+            "cartesian": {
+                "x": 62.24120058502513,
+                "y": 78.26885508072846,
+                "z": 0.13883114418182735
+            }
+        },
+        {
+            "year": 1882,
+            "lat": 51.3397,
+            "lon": 0.0512,
+            "info": "Died in Downe, Kent",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 62.470149998102045,
+                "y": 78.0863447915794,
+                "z": -0.05582387670523186
+            }
+        }
     ]
 }

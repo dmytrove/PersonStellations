@@ -3,9 +3,53 @@
     "nickname": "Cleo",
     "wiki": "https://en.wikipedia.org/wiki/Cleopatra",
     "events": [
-        { "year": -69, "lat": 31.2001, "lon": 29.9187, "info": "Born in Alexandria", "shortCode": "born" },
-        { "year": -51, "lat": 30.0444, "lon": 31.2357, "info": "Became co‑ruler", "shortCode": "ruler" },
-        { "year": -44, "lat": 41.9028, "lon": 12.4964, "info": "Visited Rome", "shortCode": "rome" },
-        { "year": -30, "lat": 31.2001, "lon": 29.9187, "info": "Died in Alexandria", "shortCode": "died" }
+        {
+            "year": -69,
+            "lat": 31.2001,
+            "lon": 29.9187,
+            "info": "Born in Alexandria",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 74.13725099106652,
+                "y": 51.80285022646055,
+                "z": -42.6630135351747
+            }
+        },
+        {
+            "year": -51,
+            "lat": 30.0444,
+            "lon": 31.2357,
+            "info": "Became co‑ruler",
+            "shortCode": "ruler",
+            "cartesian": {
+                "x": 74.01559856285986,
+                "y": 50.06709555699573,
+                "z": -44.88849643136018
+            }
+        },
+        {
+            "year": -44,
+            "lat": 41.9028,
+            "lon": 12.4964,
+            "info": "Visited Rome",
+            "shortCode": "rome",
+            "cartesian": {
+                "x": 72.66466471692397,
+                "y": 66.78689285975716,
+                "z": -16.104578346431296
+            }
+        },
+        {
+            "year": -30,
+            "lat": 31.2001,
+            "lon": 29.9187,
+            "info": "Died in Alexandria",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 74.13725099106652,
+                "y": 51.80285022646055,
+                "z": -42.6630135351747
+            }
+        }
     ]
 }

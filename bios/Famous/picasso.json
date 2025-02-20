@@ -3,10 +3,65 @@
     "nickname": "Pablo",
     "wiki": "https://en.wikipedia.org/wiki/Pablo_Picasso",
     "events": [
-        { "year": 1881, "lat": 36.7213, "lon": -4.4214, "info": "Born in Málaga, Spain", "shortCode": "born" },
-        { "year": 1901, "lat": 48.8566, "lon": 2.3522, "info": "Blue Period begins in Paris", "shortCode": "blue" },
-        { "year": 1907, "lat": 48.8566, "lon": 2.3522, "info": "Painted Les Demoiselles d'Avignon", "shortCode": "demoiselles" },
-        { "year": 1937, "lat": 48.8566, "lon": 2.3522, "info": "Painted Guernica", "shortCode": "guernica" },
-        { "year": 1973, "lat": 43.5928, "lon": 7.1047, "info": "Died in Mougins, France", "shortCode": "died" }
+        {
+            "year": 1881,
+            "lat": 36.7213,
+            "lon": -4.4214,
+            "info": "Born in Málaga, Spain",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 79.91680181722631,
+                "y": 59.79231698815952,
+                "z": 6.179289319462556
+            }
+        },
+        {
+            "year": 1901,
+            "lat": 48.8566,
+            "lon": 2.3522,
+            "info": "Blue Period begins in Paris",
+            "shortCode": "blue",
+            "cartesian": {
+                "x": 65.73914875834973,
+                "y": 75.30652322342716,
+                "z": -2.700348223283554
+            }
+        },
+        {
+            "year": 1907,
+            "lat": 48.8566,
+            "lon": 2.3522,
+            "info": "Painted Les Demoiselles d'Avignon",
+            "shortCode": "demoiselles",
+            "cartesian": {
+                "x": 65.73914875834973,
+                "y": 75.30652322342716,
+                "z": -2.700348223283554
+            }
+        },
+        {
+            "year": 1937,
+            "lat": 48.8566,
+            "lon": 2.3522,
+            "info": "Painted Guernica",
+            "shortCode": "guernica",
+            "cartesian": {
+                "x": 65.73914875834973,
+                "y": 75.30652322342716,
+                "z": -2.700348223283554
+            }
+        },
+        {
+            "year": 1973,
+            "lat": 43.5928,
+            "lon": 7.1047,
+            "info": "Died in Mougins, France",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 71.86975108416931,
+                "y": 68.95285361708984,
+                "z": -8.957837750245499
+            }
+        }
     ]
 }

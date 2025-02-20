@@ -3,11 +3,77 @@
     "nickname": "Madiba",
     "wiki": "https://en.wikipedia.org/wiki/Nelson_Mandela",
     "events": [
-        { "year": 1918, "lat": -31.5868, "lon": 28.7829, "info": "Born in Mvezo, South Africa", "shortCode": "born" },
-        { "year": 1944, "lat": -26.2041, "lon": 28.0473, "info": "Joined African National Congress", "shortCode": "anc" },
-        { "year": 1964, "lat": -26.2041, "lon": 28.0473, "info": "Sentenced to life imprisonment", "shortCode": "prison" },
-        { "year": 1990, "lat": -33.9249, "lon": 18.4241, "info": "Released from prison", "shortCode": "release" },
-        { "year": 1994, "lat": -25.7461, "lon": 28.1881, "info": "Became President of South Africa", "shortCode": "president" },
-        { "year": 2013, "lat": -26.1052, "lon": 28.0568, "info": "Died in Johannesburg", "shortCode": "died" }
+        {
+            "year": 1918,
+            "lat": -31.5868,
+            "lon": 28.7829,
+            "info": "Born in Mvezo, South Africa",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 74.66022132839454,
+                "y": -52.378966826699646,
+                "z": -41.01579190217641
+            }
+        },
+        {
+            "year": 1944,
+            "lat": -26.2041,
+            "lon": 28.0473,
+            "info": "Joined African National Congress",
+            "shortCode": "anc",
+            "cartesian": {
+                "x": 79.18562140394597,
+                "y": -44.15700581237456,
+                "z": -42.18763089528559
+            }
+        },
+        {
+            "year": 1964,
+            "lat": -26.2041,
+            "lon": 28.0473,
+            "info": "Sentenced to life imprisonment",
+            "shortCode": "prison",
+            "cartesian": {
+                "x": 79.18562140394597,
+                "y": -44.15700581237456,
+                "z": -42.18763089528559
+            }
+        },
+        {
+            "year": 1990,
+            "lat": -33.9249,
+            "lon": 18.4241,
+            "info": "Released from prison",
+            "shortCode": "release",
+            "cartesian": {
+                "x": 78.72384375336918,
+                "y": -55.81057688342879,
+                "z": -26.22471987713123
+            }
+        },
+        {
+            "year": 1994,
+            "lat": -25.7461,
+            "lon": 28.1881,
+            "info": "Became President of South Africa",
+            "shortCode": "president",
+            "cartesian": {
+                "x": 79.3902913180123,
+                "y": -43.43839478136337,
+                "z": -42.547473523812954
+            }
+        },
+        {
+            "year": 2013,
+            "lat": -26.1052,
+            "lon": 28.0568,
+            "info": "Died in Johannesburg",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 79.24577078050876,
+                "y": -44.002067044139345,
+                "z": -42.23654708006005
+            }
+        }
     ]
 }

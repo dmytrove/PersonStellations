@@ -3,9 +3,53 @@
     "nickname": "Albert",
     "wiki": "https://en.wikipedia.org/wiki/Albert_Einstein",
     "events": [
-        { "year": 1879, "lat": 48.4, "lon": 10.0, "info": "Born in Ulm, Germany", "shortCode": "born" },
-        { "year": 1905, "lat": 46.947, "lon": 7.4474, "info": "Annus Mirabilis – published groundbreaking papers", "shortCode": "papers" },
-        { "year": 1921, "lat": 48.1351, "lon": 11.582, "info": "Awarded Nobel Prize in Physics", "shortCode": "nobel" },
-        { "year": 1955, "lat": 40.3493, "lon": -74.6594, "info": "Died in Princeton, USA", "shortCode": "died" }
+        {
+            "year": 1879,
+            "lat": 48.4,
+            "lon": 10,
+            "info": "Born in Ulm, Germany",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 65.38396816479595,
+                "y": 74.77980904985318,
+                "z": -11.528957693236872
+            }
+        },
+        {
+            "year": 1905,
+            "lat": 46.947,
+            "lon": 7.4474,
+            "info": "Annus Mirabilis – published groundbreaking papers",
+            "shortCode": "papers",
+            "cartesian": {
+                "x": 67.69157313038679,
+                "y": 73.07225236158857,
+                "z": -8.848551403354753
+            }
+        },
+        {
+            "year": 1921,
+            "lat": 48.1351,
+            "lon": 11.582,
+            "info": "Awarded Nobel Prize in Physics",
+            "shortCode": "nobel",
+            "cartesian": {
+                "x": 65.37875857434356,
+                "y": 74.47205278193617,
+                "z": -13.398928379620859
+            }
+        },
+        {
+            "year": 1955,
+            "lat": 40.3493,
+            "lon": -74.6594,
+            "info": "Died in Princeton, USA",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 20.162153516350266,
+                "y": 64.74457759190314,
+                "z": 73.49576340190745
+            }
+        }
     ]
 }

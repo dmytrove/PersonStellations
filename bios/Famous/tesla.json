@@ -3,10 +3,65 @@
     "nickname": "Tesla",
     "wiki": "https://en.wikipedia.org/wiki/Nikola_Tesla",
     "events": [
-        { "year": 1856, "lat": 44.5633, "lon": 15.3083, "info": "Born in Smiljan, Croatia", "shortCode": "born" },
-        { "year": 1884, "lat": 40.7128, "lon": -74.0060, "info": "Arrived in New York, worked for Edison", "shortCode": "nyc" },
-        { "year": 1888, "lat": 40.7128, "lon": -74.0060, "info": "Presented AC motor design", "shortCode": "acmotor" },
-        { "year": 1893, "lat": 41.8781, "lon": -87.6298, "info": "World's Fair demonstrations in Chicago", "shortCode": "fair" },
-        { "year": 1943, "lat": 40.7128, "lon": -74.0060, "info": "Died in New York City", "shortCode": "died" }
+        {
+            "year": 1856,
+            "lat": 44.5633,
+            "lon": 15.3083,
+            "info": "Born in Smiljan, Croatia",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 68.71964358379,
+                "y": 70.16968307862619,
+                "z": -18.81026747183653
+            }
+        },
+        {
+            "year": 1884,
+            "lat": 40.7128,
+            "lon": -74.006,
+            "info": "Arrived in New York, worked for Edison",
+            "shortCode": "nyc",
+            "cartesian": {
+                "x": 20.88536810457708,
+                "y": 65.2267756392691,
+                "z": 72.86473179008321
+            }
+        },
+        {
+            "year": 1888,
+            "lat": 40.7128,
+            "lon": -74.006,
+            "info": "Presented AC motor design",
+            "shortCode": "acmotor",
+            "cartesian": {
+                "x": 20.88536810457708,
+                "y": 65.2267756392691,
+                "z": 72.86473179008321
+            }
+        },
+        {
+            "year": 1893,
+            "lat": 41.8781,
+            "lon": -87.6298,
+            "info": "World's Fair demonstrations in Chicago",
+            "shortCode": "fair",
+            "cartesian": {
+                "x": 3.079229990965459,
+                "y": 66.75480106452036,
+                "z": 74.39297599571513
+            }
+        },
+        {
+            "year": 1943,
+            "lat": 40.7128,
+            "lon": -74.006,
+            "info": "Died in New York City",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 20.88536810457708,
+                "y": 65.2267756392691,
+                "z": 72.86473179008321
+            }
+        }
     ]
 }

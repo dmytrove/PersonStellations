@@ -3,10 +3,65 @@
     "nickname": "Aristotle",
     "wiki": "https://en.wikipedia.org/wiki/Aristotle",
     "events": [
-        { "year": -384, "lat": 40.6956, "lon": 23.8858, "info": "Born in Stagira, Greece", "shortCode": "born" },
-        { "year": -367, "lat": 37.9715, "lon": 23.7267, "info": "Joined Plato's Academy in Athens", "shortCode": "academy" },
-        { "year": -343, "lat": 40.6401, "lon": 22.9444, "info": "Tutored Alexander the Great", "shortCode": "alexander" },
-        { "year": -335, "lat": 37.9715, "lon": 23.7267, "info": "Founded the Lyceum in Athens", "shortCode": "lyceum" },
-        { "year": -322, "lat": 38.4234, "lon": 23.8616, "info": "Died in Chalcis, Greece", "shortCode": "died" }
+        {
+            "year": -384,
+            "lat": 40.6956,
+            "lon": 23.8858,
+            "info": "Born in Stagira, Greece",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 69.32492042642414,
+                "y": 65.20401813701172,
+                "z": -30.700023235466894
+            }
+        },
+        {
+            "year": -367,
+            "lat": 37.9715,
+            "lon": 23.7267,
+            "info": "Joined Plato's Academy in Athens",
+            "shortCode": "academy",
+            "cartesian": {
+                "x": 72.16845578521274,
+                "y": 61.52694277841905,
+                "z": -31.719856587300978
+            }
+        },
+        {
+            "year": -343,
+            "lat": 40.6401,
+            "lon": 22.9444,
+            "info": "Tutored Alexander the Great",
+            "shortCode": "alexander",
+            "cartesian": {
+                "x": 69.87808861289162,
+                "y": 65.13054543863846,
+                "z": -29.58149392228725
+            }
+        },
+        {
+            "year": -335,
+            "lat": 37.9715,
+            "lon": 23.7267,
+            "info": "Founded the Lyceum in Athens",
+            "shortCode": "lyceum",
+            "cartesian": {
+                "x": 72.16845578521274,
+                "y": 61.52694277841905,
+                "z": -31.719856587300978
+            }
+        },
+        {
+            "year": -322,
+            "lat": 38.4234,
+            "lon": 23.8616,
+            "info": "Died in Chalcis, Greece",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 71.64754196549912,
+                "y": 62.14677943958994,
+                "z": -31.69238923762302
+            }
+        }
     ]
 }

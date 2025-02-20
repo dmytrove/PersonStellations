@@ -3,10 +3,65 @@
     "nickname": "Wolfgang",
     "wiki": "https://en.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart",
     "events": [
-        { "year": 1756, "lat": 47.8095, "lon": 13.0550, "info": "Born in Salzburg, Austria", "shortCode": "born" },
-        { "year": 1762, "lat": 48.2082, "lon": 16.3738, "info": "First performance for European royalty", "shortCode": "royal" },
-        { "year": 1782, "lat": 48.2082, "lon": 16.3738, "info": "Marriage to Constanze Weber", "shortCode": "marriage" },
-        { "year": 1787, "lat": 50.0755, "lon": 14.4378, "info": "Don Giovanni premieres in Prague", "shortCode": "dongiovanni" },
-        { "year": 1791, "lat": 48.2082, "lon": 16.3738, "info": "Died in Vienna", "shortCode": "died" }
+        {
+            "year": 1756,
+            "lat": 47.8095,
+            "lon": 13.055,
+            "info": "Born in Salzburg, Austria",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 65.42394185917325,
+                "y": 74.09159615946453,
+                "z": -15.170471652204375
+            }
+        },
+        {
+            "year": 1762,
+            "lat": 48.2082,
+            "lon": 16.3738,
+            "info": "First performance for European royalty",
+            "shortCode": "royal",
+            "cartesian": {
+                "x": 63.93975312492971,
+                "y": 74.55713841745936,
+                "z": -18.786726200241727
+            }
+        },
+        {
+            "year": 1782,
+            "lat": 48.2082,
+            "lon": 16.3738,
+            "info": "Marriage to Constanze Weber",
+            "shortCode": "marriage",
+            "cartesian": {
+                "x": 63.93975312492971,
+                "y": 74.55713841745936,
+                "z": -18.786726200241727
+            }
+        },
+        {
+            "year": 1787,
+            "lat": 50.0755,
+            "lon": 14.4378,
+            "info": "Don Giovanni premieres in Prague",
+            "shortCode": "dongiovanni",
+            "cartesian": {
+                "x": 62.15095618271445,
+                "y": 76.68907941895007,
+                "z": -16.001366924368536
+            }
+        },
+        {
+            "year": 1791,
+            "lat": 48.2082,
+            "lon": 16.3738,
+            "info": "Died in Vienna",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 63.93975312492971,
+                "y": 74.55713841745936,
+                "z": -18.786726200241727
+            }
+        }
     ]
 }

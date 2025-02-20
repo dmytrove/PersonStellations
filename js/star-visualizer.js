@@ -139,7 +139,8 @@ export class StarVisualizer {
         const personStars = [];
 
         person.events.forEach(event => {
-            const pos = latLongToCartesian(event.lat, event.lon, radius);
+            // Use pre-computed cartesian coordinates if available, otherwise compute them
+            const pos = event.cartesian || latLongToCartesian(event.lat, event.lon, radius);
             const starMesh = new THREE.Mesh(geometry, material.clone());
             starMesh.position.set(pos.x, pos.y, pos.z);
             starMesh.userData = {

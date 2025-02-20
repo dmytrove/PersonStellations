@@ -8,70 +8,120 @@
             "lat": 51.1431,
             "lon": 23.4719,
             "info": "Born on 15th June 1920 in Pogranicze, Chelm district, Lublin province, Poland, to parents Jehide and Elke (née Szwarc) Warzager.",
-            "shortCode": "born"
+            "shortCode": "born",
+            "cartesian": {
+                "x": 57.546543889577045,
+                "y": 77.87153052815844,
+                "z": -24.988397699073676
+            }
         },
         {
             "year": 1935,
             "lat": 51.1431,
             "lon": 23.4719,
             "info": "Completed school and attended cheder in Chelm for six months before returning home to assist his family.",
-            "shortCode": "education"
+            "shortCode": "education",
+            "cartesian": {
+                "x": 57.546543889577045,
+                "y": 77.87153052815844,
+                "z": -24.988397699073676
+            }
         },
         {
             "year": 1938,
             "lat": 51.1431,
             "lon": 23.4719,
             "info": "Began working at a concrete factory owned by relatives in Udalec, near Chelm, producing roof tiles and other concrete products.",
-            "shortCode": "employment"
+            "shortCode": "employment",
+            "cartesian": {
+                "x": 57.546543889577045,
+                "y": 77.87153052815844,
+                "z": -24.988397699073676
+            }
         },
         {
             "year": 1939,
             "lat": 59.9311,
             "lon": 30.3609,
             "info": "Conscripted into the Soviet Army during World War II; served on various fronts, including near Leningrad (now St. Petersburg).",
-            "shortCode": "military_service"
+            "shortCode": "military_service",
+            "cartesian": {
+                "x": 43.232768785429045,
+                "y": 86.54235118298685,
+                "z": -25.324872257648366
+            }
         },
         {
             "year": 1943,
             "lat": 59.9311,
             "lon": 30.3609,
             "info": "Wounded during an offensive near Leningrad; sustained injuries to his arm and leg, leading to a six-month hospitalization.",
-            "shortCode": "injury"
+            "shortCode": "injury",
+            "cartesian": {
+                "x": 43.232768785429045,
+                "y": 86.54235118298685,
+                "z": -25.324872257648366
+            }
         },
         {
             "year": 1946,
-            "lat": 51.2070,
-            "lon": 16.1550,
+            "lat": 51.207,
+            "lon": 16.155,
             "info": "Repatriated to Poland and settled in Legnica; initially worked in a tank repair factory operated by the Russians.",
-            "shortCode": "repatriation"
+            "shortCode": "repatriation",
+            "cartesian": {
+                "x": 60.176933991809754,
+                "y": 77.94145132122826,
+                "z": -17.43177504690719
+            }
         },
         {
             "year": 1950,
-            "lat": 51.2070,
-            "lon": 16.1550,
+            "lat": 51.207,
+            "lon": 16.155,
             "info": "Began a 22-year tenure as a locksmith at the Legnica Clothing Factory (ELPO); also served in the factory's fire brigade.",
-            "shortCode": "employment_elpo"
+            "shortCode": "employment_elpo",
+            "cartesian": {
+                "x": 60.176933991809754,
+                "y": 77.94145132122826,
+                "z": -17.43177504690719
+            }
         },
         {
             "year": 1955,
-            "lat": 51.2070,
-            "lon": 16.1550,
+            "lat": 51.207,
+            "lon": 16.155,
             "info": "Legally changed his first name from Icek to Michal as part of post-war assimilation.",
-            "shortCode": "name_change"
+            "shortCode": "name_change",
+            "cartesian": {
+                "x": 60.176933991809754,
+                "y": 77.94145132122826,
+                "z": -17.43177504690719
+            }
         },
         {
             "year": 1960,
-            "lat": 51.2070,
-            "lon": 16.1550,
+            "lat": 51.207,
+            "lon": 16.155,
             "info": "Actively involved in the Union of War Invalids; served as a financial aid and loan officer, assisting fellow veterans.",
-            "shortCode": "community_service"
+            "shortCode": "community_service",
+            "cartesian": {
+                "x": 60.176933991809754,
+                "y": 77.94145132122826,
+                "z": -17.43177504690719
+            }
         },
         {
             "year": 2004,
-            "lat": 51.2070,
-            "lon": 16.1550,
+            "lat": 51.207,
+            "lon": 16.155,
             "info": "At age 84, continued to reside in Legnica, contributing to the local Jewish community's weekly Sabbath observances.",
-            "shortCode": "later_life"
+            "shortCode": "later_life",
+            "cartesian": {
+                "x": 60.176933991809754,
+                "y": 77.94145132122826,
+                "z": -17.43177504690719
+            }
         }
     ]
 }

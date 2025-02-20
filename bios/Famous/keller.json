@@ -3,10 +3,65 @@
     "nickname": "Helen",
     "wiki": "https://en.wikipedia.org/wiki/Helen_Keller",
     "events": [
-        { "year": 1880, "lat": 34.7445, "lon": -87.6675, "info": "Born in Tuscumbia, Alabama", "shortCode": "born" },
-        { "year": 1887, "lat": 34.7445, "lon": -87.6675, "info": "Met Anne Sullivan, began learning to communicate", "shortCode": "sullivan" },
-        { "year": 1904, "lat": 42.3736, "lon": -71.1097, "info": "Graduated from Radcliffe College", "shortCode": "graduate" },
-        { "year": 1920, "lat": 40.7128, "lon": -74.0060, "info": "Helped found American Civil Liberties Union", "shortCode": "aclu" },
-        { "year": 1968, "lat": 34.7445, "lon": -87.6675, "info": "Died in Tuscumbia, Alabama", "shortCode": "died" }
+        {
+            "year": 1880,
+            "lat": 34.7445,
+            "lon": -87.6675,
+            "info": "Born in Tuscumbia, Alabama",
+            "shortCode": "born",
+            "cartesian": {
+                "x": 3.3442074795241448,
+                "y": 56.991788752629816,
+                "z": 82.10208457225379
+            }
+        },
+        {
+            "year": 1887,
+            "lat": 34.7445,
+            "lon": -87.6675,
+            "info": "Met Anne Sullivan, began learning to communicate",
+            "shortCode": "sullivan",
+            "cartesian": {
+                "x": 3.3442074795241448,
+                "y": 56.991788752629816,
+                "z": 82.10208457225379
+            }
+        },
+        {
+            "year": 1904,
+            "lat": 42.3736,
+            "lon": -71.1097,
+            "info": "Graduated from Radcliffe College",
+            "shortCode": "graduate",
+            "cartesian": {
+                "x": 23.918083082260175,
+                "y": 67.39620602217667,
+                "z": 69.89761594994793
+            }
+        },
+        {
+            "year": 1920,
+            "lat": 40.7128,
+            "lon": -74.006,
+            "info": "Helped found American Civil Liberties Union",
+            "shortCode": "aclu",
+            "cartesian": {
+                "x": 20.88536810457708,
+                "y": 65.2267756392691,
+                "z": 72.86473179008321
+            }
+        },
+        {
+            "year": 1968,
+            "lat": 34.7445,
+            "lon": -87.6675,
+            "info": "Died in Tuscumbia, Alabama",
+            "shortCode": "died",
+            "cartesian": {
+                "x": 3.3442074795241448,
+                "y": 56.991788752629816,
+                "z": 82.10208457225379
+            }
+        }
     ]
 }
