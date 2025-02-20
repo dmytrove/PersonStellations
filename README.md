@@ -1,8 +1,25 @@
-# PersonStallations: Interactive Biography Visualization
+# PersonStellations
 
-An interactive 3D visualization tool that depicts biographies through a celestial interface, with a special focus on Holocaust survivors from Centropa's archive.
+An interactive visualization of historical figures and their connections displayed as a celestial constellation.
 
-![Visualization Screenshot](docs/screenshots/screenshot1.png)
+## Live Demo
+Visit the live application at: https://dmytrove.github.io/PersonStellations/
+
+## Local Development
+1. Clone the repository
+2. Open index.html in a web browser
+
+## Deployment
+This project is configured to be deployed on GitHub Pages. To deploy:
+
+1. Go to your repository settings on GitHub
+2. Navigate to "Pages" under "Code and automation"
+3. Under "Source", select "Deploy from a branch"
+4. Select the branch you want to deploy (usually "main" or "master")
+5. Select the root folder "/(root)"
+6. Click "Save"
+
+The site will be published at https://dmytrove.github.io/PersonStellations/
 
 ## Overview
 
