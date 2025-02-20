@@ -22,14 +22,25 @@ export class StarVisualizer {
         this.lastFrameTime = 0;
         this.TARGET_FRAME_RATE = 60;
         this.FRAME_BUDGET = 1000 / 60; // 16.67ms target frame time
+        this.isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        this.circleGeometry = null;
     }
 
     createSphereGeometry() {
-        const cacheKey = 'sphere';
+        const cacheKey = this.isMobileDevice ? 'circle' : 'sphere';
         if (this.geometryCache.has(cacheKey)) {
             return this.geometryCache.get(cacheKey);
         }
-        const geometry = new THREE.SphereGeometry(0.6, 16, 16); // Reduced segments for mobile
+
+        let geometry;
+        if (this.isMobileDevice) {
+            // Use a circle geometry for mobile (faces camera)
+            geometry = new THREE.CircleGeometry(0.4, 16);
+        } else {
+            // Use sphere for desktop
+            geometry = new THREE.SphereGeometry(0.6, 16, 16);
+        }
+        
         this.geometryCache.set(cacheKey, geometry);
         return geometry;
     }
@@ -68,53 +79,75 @@ export class StarVisualizer {
         this.clearScene(scene);
         
         const radius = 50;
-        const useSimplifiedGeometry = window.navigator.userAgent.includes('iPhone');
+        const showGrid = !this.isMobileDevice && config.showGrid !== false;
         
         // Create dome with optimized geometry for mobile
-        const dome = this.domeVisualizer.createDome(radius, useSimplifiedGeometry);
-        this.group.add(dome);
-        
-        const geodesicLines = this.domeVisualizer.createGeodesicLines(
-            radius, 
-            useSimplifiedGeometry ? Math.floor(config.geodesicCount / 2) : config.geodesicCount,
-            config.geodesicColor
-        );
-        this.group.add(geodesicLines);
-        
-        this.domeVisualizer.updateVisibility(config);
+        if (showGrid) {
+            const dome = this.domeVisualizer.createDome(radius, this.isMobileDevice);
+            this.group.add(dome);
+            
+            const gridCount = this.isMobileDevice ? Math.floor(config.geodesicCount / 3) : config.geodesicCount;
+            const geodesicLines = this.domeVisualizer.createGeodesicLines(radius, gridCount, config.geodesicColor);
+            this.group.add(geodesicLines);
+            this.domeVisualizer.updateVisibility(config);
+        }
 
         const sphereGeometry = this.createSphereGeometry();
         this.group.add(this.timelineLines);
 
         // Batch creation for better performance
         const starBatch = new THREE.Group();
-        persons.forEach((person, personIndex) => {
-            const hue = personIndex / persons.length;
-            const color = new THREE.Color().setHSL(hue, 1, 0.5);
-            const glowColor = new THREE.Color().setHSL(hue, 1, 0.7);
+        const batchSize = 50;
+        
+        for (let i = 0; i < persons.length; i += batchSize) {
+            const batch = persons.slice(i, i + batchSize);
             
-            // Cache and reuse materials
-            const materialKey = `${color.getHexString()}-${glowColor.getHexString()}`;
-            let material = this.materialCache.get(materialKey);
-            if (!material) {
-                material = this.starAnimator.createStarMaterial(color, glowColor);
-                this.materialCache.set(materialKey, material);
-            }
+            batch.forEach((person, index) => {
+                const hue = ((i + index) / persons.length);
+                const color = new THREE.Color().setHSL(hue, 1, 0.5);
+                const glowColor = new THREE.Color().setHSL(hue, 1, 0.7);
+                
+                const materialKey = `${color.getHexString()}-${glowColor.getHexString()}`;
+                let material = this.materialCache.get(materialKey);
+                if (!material) {
+                    material = this.isMobileDevice ? 
+                        new THREE.MeshBasicMaterial({ 
+                            color: color,
+                            transparent: true,
+                            opacity: 0.8,
+                            side: THREE.DoubleSide 
+                        }) :
+                        this.starAnimator.createStarMaterial(color, glowColor);
+                    this.materialCache.set(materialKey, material);
+                }
 
-            const personStars = this.createPersonStars(person, sphereGeometry, material, radius, config);
-            starBatch.add(...personStars);
-        });
+                const personStars = this.createPersonStars(person, sphereGeometry, material, radius, config);
+                starBatch.add(...personStars);
+            });
+
+            // Allow browser to process batch
+            if (i + batchSize < persons.length) {
+                await new Promise(resolve => setTimeout(resolve, 0));
+            }
+        }
+        
         this.group.add(starBatch);
 
-        // Clear caches when appropriate
-        if (this.materialCache.size > 100) {
-            this.materialCache.clear();
+        // Reduce timeline opacity on mobile
+        if (this.isMobileDevice) {
+            this.timelineLines.children.forEach(line => {
+                if (line.material) {
+                    line.material.opacity = 0.15;
+                }
+            });
         }
 
         scene.add(this.group);
         scene.userData.camera = config.camera;
         
-        this.starAnimator.setupLighting(scene);
+        if (!this.isMobileDevice) {
+            this.starAnimator.setupLighting(scene);
+        }
         return this.group;
     }
 
@@ -282,20 +315,37 @@ export class StarVisualizer {
 
     // Add frame rate control
     updateAnimation(time) {
-        const deltaTime = time - this.lastFrameTime;
-        if (deltaTime < this.FRAME_BUDGET) {
-            return; // Skip frame if we're running too fast
-        }
-        this.lastFrameTime = time;
-        
-        // Update animations with delta time
-        this.starMeshes.forEach(mesh => {
-            if (mesh.userData.pulsePhase !== undefined) {
-                mesh.userData.pulsePhase += deltaTime * 0.001;
-                const scale = 1 + Math.sin(mesh.userData.pulsePhase) * 0.1;
-                mesh.scale.setScalar(scale * mesh.userData.originalScale);
+        if (this.isMobileDevice) {
+            // Minimal animation for mobile
+            const deltaTime = time - this.lastFrameTime;
+            if (deltaTime < this.FRAME_BUDGET * 2) { // Double the frame budget for mobile
+                return;
             }
-        });
+            this.lastFrameTime = time;
+            
+            // Simple opacity pulse instead of scale animation
+            this.starMeshes.forEach(mesh => {
+                if (mesh.visible && mesh.material) {
+                    mesh.material.opacity = 0.8 + Math.sin(time * 2) * 0.2;
+                }
+            });
+        } else {
+            // Desktop animation
+            const deltaTime = time - this.lastFrameTime;
+            if (deltaTime < this.FRAME_BUDGET) {
+                return; // Skip frame if we're running too fast
+            }
+            this.lastFrameTime = time;
+            
+            // Update animations with delta time
+            this.starMeshes.forEach(mesh => {
+                if (mesh.userData.pulsePhase !== undefined) {
+                    mesh.userData.pulsePhase += deltaTime * 0.001;
+                    const scale = 1 + Math.sin(mesh.userData.pulsePhase) * 0.1;
+                    mesh.scale.setScalar(scale * mesh.userData.originalScale);
+                }
+            });
+        }
     }
 
     dispose() {
