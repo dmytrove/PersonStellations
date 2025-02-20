@@ -43,6 +43,16 @@ export class App {
             this.gui.close();
         }
 
+        // Add Info folder at the top
+        const infoFolder = this.gui.addFolder('Info');
+        const links = {
+            openRepo: () => window.open('https://github.com/dmytrove/PersonStellations', '_blank'),
+            openIssues: () => window.open('https://github.com/dmytrove/PersonStellations/issues', '_blank')
+        };
+        infoFolder.add(links, 'openRepo').name('GitHub Repository');
+        infoFolder.add(links, 'openIssues').name('Report Issues');
+        infoFolder.open(false);
+
         const appearanceFolder = this.gui.addFolder('Appearance');
         appearanceFolder.open(false);
         appearanceFolder.add(config, 'isDarkTheme')
