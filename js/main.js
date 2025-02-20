@@ -211,12 +211,7 @@ export class App {
 
         if (intersects.length > 0) {
             const star = intersects[0].object;
-            // Animate the star on click
-            const originalScale = star.scale.x;
-            star.scale.setScalar(originalScale * 2);
-            setTimeout(() => {
-                star.scale.setScalar(originalScale);
-            }, 200);
+            // No animation on click
         }
     }
 
@@ -241,6 +236,7 @@ export class App {
 
     animate() {
         requestAnimationFrame(() => this.animate());
+        // Only update camera controls and render
         this.inputManager.update(this.stars, config);
         this.renderer.render(this.scene, this.camera);
     }
