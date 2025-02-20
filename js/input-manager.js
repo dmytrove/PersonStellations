@@ -62,8 +62,9 @@ export class InputManager {
                 y: y - this.previousPosition.y
             };
 
-            this.targetRotation.x += deltaMove.y * 0.005 * config.panSpeed;
-            this.targetRotation.y += deltaMove.x * 0.005 * config.panSpeed;
+            // Invert the rotation directions for more natural touch interaction
+            this.targetRotation.x -= deltaMove.y * 0.005 * config.panSpeed;
+            this.targetRotation.y -= deltaMove.x * 0.005 * config.panSpeed;
 
             // Limit vertical rotation
             this.targetRotation.x = Math.max(-Math.PI/2, Math.min(Math.PI/2, this.targetRotation.x));
