@@ -1,5 +1,7 @@
 ## Motivational letter
 
+Experience the live visualization at: https://dmytrove.github.io/PersonStellations/
+
 ![PersonStallations Interface](screenshots/screenshot1.png)
 
 I am committed to transforming the written biographies from Centropa.org into immersive 3D artworks to be showcased in the MemoryLanes app under the PersonStallations project. My vision is to reimagine these powerful narratives as interactive celestial maps, where each star embodies a significant moment in a survivor's life. Inspired by Stellarium's star maps and the Stellarium app, my project employs advanced 3D rendering techniques with Three.js to create dynamic star visualizations. In augmented reality, users can move their cameras to see where significant events occurred, and tapping on individual stars will reveal detailed information about each moment.
